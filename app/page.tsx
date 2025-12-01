@@ -25,6 +25,9 @@ export default function Page() {
           <StepperPanel header="Explore">
             <ExploreSection />
           </StepperPanel>
+          <StepperPanel header="Result">
+            Result
+          </StepperPanel>
         </Stepper>
       </main>
     </div>
