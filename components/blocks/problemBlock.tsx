@@ -6,13 +6,14 @@ import { useState } from "react";
 import { Button } from "primereact/button";
 import { Panel } from "primereact/panel";
 import { TiWarning } from "react-icons/ti";
+import { Problem } from "@/types/types";
 
 const ProblemBlock = ({
   problems,
   setProblems,
 }: {
-  problems: string[];
-  setProblems: (problems: string[]) => void;
+  problems: Problem[];
+  setProblems: (problems: Problem[]) => void;
 }) => {
   const removeProblem = (index: number) => {
     const newProblems = [...problems];
@@ -29,19 +30,22 @@ const ProblemBlock = ({
       }
     >
       <DataTable
-        showHeaders={false}
         dataKey="index"
         value={problems.map((problem, index) => ({
-          name: problem,
+          ...problem,
           index: index,
         }))}
       >
+
         <Column
           field="name"
-          header="name"
+          header="name" />
+        <Column
+          field="level"
+          header="level"
           body={(data) => (
             <div className="flex items-center justify-between">
-              <span>{data.name}</span>
+              <span>{data.level}</span>
               <Button
                 icon="pi pi-times"
                 type="button"

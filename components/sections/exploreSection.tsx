@@ -12,12 +12,22 @@ import ProblemBlock from "../blocks/problemBlock";
 import ActionBlock from "../blocks/ActionBlock";
 import ActionProblemFromBlock from "../blocks/actionProblemFromBlock";
 import ImageUploads from "../blocks/imageUploads";
+import { Problem } from "@/types/types";
 
 export default function ExploreSection() {
-  const [problems, setProblems] = useState<string[]>([
-    "Problem 1",
-    "Problem 2",
-    "Problem 3",
+  const [problems, setProblems] = useState<Problem[]>([
+    {
+      name:"Problem 1",
+      level:"low"
+    },
+    {
+      name:"Problem 2",
+      level:"moderate"
+    },
+    {
+      name:"Problem 3",
+      level:"critical"
+    },
   ]);
 
   const [actions, setActions] = useState([
@@ -69,12 +79,12 @@ export default function ExploreSection() {
       <p className="text-lg font-bold">Summary</p>
       <Toolbar
         start={
-          <div>
-            <p className="text-xs text-gray-500">Total Cost</p>
-            <p>{actions.reduce((total, action) => total + action.cost, 0)}</p>
-          </div>
+          <Button label="Back" severity="secondary" />
         }
-        end={<Button label="Submit" />}
+        end={<div className="gap-8 flex items-center"><div>
+          <p className="text-xs text-gray-500">Total Cost</p>
+          <p>{actions.reduce((total, action) => total + action.cost, 0)}</p>
+        </div><Button label="Finish" /></div>}
       />
     </section>
   );

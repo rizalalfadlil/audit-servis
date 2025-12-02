@@ -1,3 +1,4 @@
+import { Problem } from "@/types/types";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { FloatLabel } from "primereact/floatlabel";
@@ -12,13 +13,13 @@ export default function ActionProblemFromBlock({
   actions,
   setActions,
 }: {
-  problems: string[];
+  problems: Problem[];
   actions: {
     name: string;
     type: string;
     cost: number;
   }[];
-  setProblems: (problems: string[]) => void;
+  setProblems: (problems: Problem[]) => void;
   setActions: (
     actions: {
       name: string;
@@ -33,7 +34,7 @@ export default function ActionProblemFromBlock({
   const [actionCost, setActionCost] = React.useState(0);
 
   const addProblem = () => {
-    setProblems([...problems, problemName]);
+    setProblems([...problems, {name:problemName,level:"low"}]);
     setProblemName("");
   };
 

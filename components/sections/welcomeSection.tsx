@@ -1,7 +1,12 @@
+"use client"
+import { useRouter } from "next/navigation";
 import { Button } from "primereact/button";
+
 const WelcomeSection = () => {
+  const router = useRouter()
+
   return (
-    <section className="h-dvh flex flex-col justify-center items-center">
+    <section className="mt-20 flex flex-col justify-center items-center">
       <div className="flex flex-col gap-2 text-center justify-center items-center">
         <p className="text-4xl font-bold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -11,7 +16,7 @@ const WelcomeSection = () => {
           dolor sit.
         </p>
         <div className="flex gap-2 mt-4">
-          <Button label="Get Started" />
+          <Button label="Get Started" onClick={() => {router.push('/app')}}/>
           <Button label="Docs" className="p-button-outlined" />
         </div>
       </div>
