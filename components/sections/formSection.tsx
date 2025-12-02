@@ -10,11 +10,11 @@ const FormSection = () => {
     <section>
       <p className="text-2xl font-bold">Step 1</p>
       <Divider />
-      <div className="grid grid-cols-3 gap-8 py-8">
+      <div className="grid sm:grid-cols-3 gap-8 py-8">
         <div className="flex justify-center items-center bg-gray-50 border border-gray-200 rounded-lg">
           <BsLaptop className="text-4xl" size={100} />
         </div>
-        <div className="space-y-8 col-span-2">
+        <div className="space-y-8 sm:col-span-2">
           <div className="grid gap-8 **:w-full py-4">
             <p className="text-xl font-bold">User Information</p>
             <FloatLabel>
@@ -35,7 +35,7 @@ const FormSection = () => {
               <label htmlFor="problem">Problem</label>
             </FloatLabel>
           </div>
-          <Button label="Submit" />
+          <Button label="Submit" className="w-full sm:w-fit" />
         </div>
       </div>
     </section>

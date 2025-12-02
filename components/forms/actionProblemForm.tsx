@@ -1,13 +1,14 @@
-import { Problem } from "@/types/types";
+"use client";
+import { Action, Problem } from "@/types/service";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { FloatLabel } from "primereact/floatlabel";
 import { InputNumber } from "primereact/inputnumber";
 import { InputText } from "primereact/inputtext";
 import { TabPanel, TabView } from "primereact/tabview";
-import React from "react";
+import React, { useState } from "react";
 
-export default function ActionProblemFromBlock({
+export default function ActionProblemForm({
   problems,
   setProblems,
   actions,
@@ -29,13 +30,15 @@ export default function ActionProblemFromBlock({
   ) => void;
 }) {
   const [problemName, setProblemName] = React.useState("");
+  const [problemLevel, setProblemLevel] = useState<Problem["level"]>("low");
   const [actionName, setActionName] = React.useState("");
-  const [actionType, setActionType] = React.useState("");
+  const [actionType, setActionType] = useState<Action["type"]>("service");
   const [actionCost, setActionCost] = React.useState(0);
 
   const addProblem = () => {
-    setProblems([...problems, {name:problemName,level:"low"}]);
+    setProblems([...problems, { name: problemName, level: problemLevel }]);
     setProblemName("");
+    setProblemLevel("low")
   };
 
   const addAction = () => {
@@ -44,32 +47,46 @@ export default function ActionProblemFromBlock({
       { name: actionName, type: actionType, cost: actionCost },
     ]);
     setActionName("");
-    setActionType("");
+    setActionType("service");
     setActionCost(0);
   };
   return (
     <TabView>
       <TabPanel header="Problem">
-        <div className="flex gap-4 py-4 items-center">
-          <FloatLabel className="grow *:w-full">
+        <div className="py-4 grid md:flex gap-4 space-y-8 w-full items-center">
+          <FloatLabel className="grow">
             <label htmlFor="problemName">Problem Name</label>
             <InputText
-              className="grow"
+              className="w-full"
               id="problemName"
-              placeholder="Problem Name"
               value={problemName}
               onChange={(e) => setProblemName(e.target.value)}
             />
           </FloatLabel>
-          <Button label="Add" disabled={!problemName} onClick={addProblem} />
+          <FloatLabel className="grow *:w-full">
+            <label htmlFor="problemLevel">Problem Level</label>
+            <Dropdown
+              inputId="problemLevel"
+              options={["low", "moderate", "high"]}
+              className="grow"
+              value={problemLevel}
+              onChange={(e) => setProblemLevel(e.value)}
+            />
+          </FloatLabel>
+          <Button
+            label="Add"
+            className="grow"
+            disabled={!problemName}
+            onClick={addProblem}
+          />
         </div>
       </TabPanel>
       <TabPanel header="Action">
-        <div className="flex gap-4 py-4 items-center">
-          <FloatLabel className="grow *:w-full">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-8 py-4 items-center">
+          <FloatLabel className=" *:w-full">
             <label htmlFor="actionName">Action Name</label>
             <InputText
-              className="grow"
+              className="w-full"
               id="actionName"
               value={actionName}
               onChange={(e) => setActionName(e.target.value)}
@@ -77,19 +94,14 @@ export default function ActionProblemFromBlock({
             />
           </FloatLabel>
           <FloatLabel className="grow *:w-full">
+            <label htmlFor="actionType">Action Type</label>
             <Dropdown
               inputId="actionType"
-              options={[
-                { name: "Service", value: "service" },
-                { name: "Product", value: "product" },
-              ]}
-              optionLabel="name"
-              optionValue="value"
-              className="w-full"
+              options={["service", "product"]}
+              className="grow"
               value={actionType}
               onChange={(e) => setActionType(e.value)}
             />
-            <label htmlFor="actionType">Select Type</label>
           </FloatLabel>
           <FloatLabel className="grow *:w-full">
             <label htmlFor="actionCost">Action Cost</label>

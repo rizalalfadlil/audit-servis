@@ -6,7 +6,7 @@ const WelcomeSection = () => {
   const router = useRouter()
 
   return (
-    <section className="mt-20 flex flex-col justify-center items-center">
+    <section className="mt-[20vh] flex flex-col justify-center items-center">
       <div className="flex flex-col gap-2 text-center justify-center items-center">
         <p className="text-4xl font-bold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.

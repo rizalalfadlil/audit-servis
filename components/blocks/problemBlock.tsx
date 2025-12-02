@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Button } from "primereact/button";
 import { Panel } from "primereact/panel";
 import { TiWarning } from "react-icons/ti";
-import { Problem } from "@/types/types";
+import { Problem } from "@/types/service";
 
 const ProblemBlock = ({
   problems,
@@ -36,10 +36,7 @@ const ProblemBlock = ({
           index: index,
         }))}
       >
-
-        <Column
-          field="name"
-          header="name" />
+        <Column field="name" header="name" />
         <Column
           field="level"
           header="level"

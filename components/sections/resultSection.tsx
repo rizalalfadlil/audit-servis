@@ -54,7 +54,7 @@ export default function ResultSection() {
                 <Column field="cost" header="cost" />
             </DataTable>
             <p className="text-lg font-bold">Images</p>
-            <div className="flex gap-4 *:rounded-lg">
+            <div className="flex gap-4 *:rounded-lg overflow-y-auto">
                 {images.map((image, index) => (
                     <img src={image} className="h-40 aspect-square" key={index} />
                 ))}

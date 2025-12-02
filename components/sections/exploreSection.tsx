@@ -1,32 +1,28 @@
 "use client";
 import { Divider } from "primereact/divider";
 import { Toolbar } from "primereact/toolbar";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
 import { BsLaptop } from "react-icons/bs";
-import { Tag } from "primereact/tag";
 import { useState } from "react";
 import { Button } from "primereact/button";
-import { FaX } from "react-icons/fa6";
 import ProblemBlock from "../blocks/problemBlock";
-import ActionBlock from "../blocks/ActionBlock";
-import ActionProblemFromBlock from "../blocks/actionProblemFromBlock";
+import ActionBlock from "../blocks/actionBlock";
+import ActionProblemForm from "../forms/actionProblemForm";
 import ImageUploads from "../blocks/imageUploads";
-import { Problem } from "@/types/types";
+import { Problem } from "@/types/service";
 
 export default function ExploreSection() {
   const [problems, setProblems] = useState<Problem[]>([
     {
-      name:"Problem 1",
-      level:"low"
+      name: "Problem 1",
+      level: "low",
     },
     {
-      name:"Problem 2",
-      level:"moderate"
+      name: "Problem 2",
+      level: "moderate",
     },
     {
-      name:"Problem 3",
-      level:"critical"
+      name: "Problem 3",
+      level: "critical",
     },
   ]);
 
@@ -64,13 +60,13 @@ export default function ExploreSection() {
         }
       />
       <p className="text-lg font-bold">Add New</p>
-      <ActionProblemFromBlock
+      <ActionProblemForm
         problems={problems}
         actions={actions}
         setProblems={setProblems}
         setActions={setActions}
       />
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8">
         <ProblemBlock problems={problems} setProblems={setProblems} />
         <ActionBlock actions={actions} setActions={setActions} />
       </div>
@@ -78,13 +74,16 @@ export default function ExploreSection() {
       <ImageUploads />
       <p className="text-lg font-bold">Summary</p>
       <Toolbar
-        start={
-          <Button label="Back" severity="secondary" />
+        start={<Button label="Back" severity="secondary" />}
+        end={
+          <div className="gap-8 flex items-center">
+            <div>
+              <p className="text-xs text-gray-500">Total Cost</p>
+              <p>{actions.reduce((total, action) => total + action.cost, 0)}</p>
+            </div>
+            <Button label="Finish" />
+          </div>
         }
-        end={<div className="gap-8 flex items-center"><div>
-          <p className="text-xs text-gray-500">Total Cost</p>
-          <p>{actions.reduce((total, action) => total + action.cost, 0)}</p>
-        </div><Button label="Finish" /></div>}
       />
     </section>
   );
