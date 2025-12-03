@@ -10,16 +10,11 @@ import { Problem } from "@/types/service";
 
 const ProblemBlock = ({
   problems,
-  setProblems,
+  removeProblem,
 }: {
   problems: Problem[];
-  setProblems: (problems: Problem[]) => void;
+  removeProblem: (index: number) => void;
 }) => {
-  const removeProblem = (index: number) => {
-    const newProblems = [...problems];
-    newProblems.splice(index, 1);
-    setProblems(newProblems);
-  };
   return (
     <Panel
       header={
@@ -50,11 +45,7 @@ const ProblemBlock = ({
                 text
                 size="small"
                 severity="danger"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  removeProblem(data.index);
-                }}
+                onClick={() => removeProblem(data.index)}
               />
             </div>
           )}

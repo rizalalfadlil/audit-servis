@@ -1,7 +1,8 @@
 export interface ServiceReport {
-  initialCheck: InitialCheck,
-  diagnosisResult: DiagnosisResult
-};
+  initialCheck: InitialCheck;
+  diagnosisResult: DiagnosisResult;
+
+}
 export type InitialCheck = {
   customerName: string;
   customerContact: string | number;
@@ -11,7 +12,9 @@ export type InitialCheck = {
 export type DiagnosisResult = {
   problems: Problem[];
   actions: Action[];
-  images: string[];
+  images: File[] | string[];
+  status: string;
+  totalCost: number;
 };
 export type Problem = {
   name: string;

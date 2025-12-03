@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "primereact/button";
-import { Dialog } from "primereact/dialog";
 import { Toolbar } from "primereact/toolbar";
 import { useEffect, useState } from "react";
 import { IoHome } from "react-icons/io5";
@@ -10,9 +9,6 @@ import { getCurrentUser, logOut } from "@/backend/controller/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebase } from "@/backend/firebase";
 import { UserProps } from "@/types/user";
-import { Menubar } from "primereact/menubar";
-import { BiUserCircle } from "react-icons/bi";
-import { Tooltip } from "primereact/tooltip";
 
 export default function Header() {
   const router = useRouter();
@@ -29,7 +25,7 @@ export default function Header() {
             address: res.address,
             email: res.email,
           });
-          console.log(res);
+          
         } catch (e) {
           console.error(e);
           setUser(null);
@@ -44,7 +40,7 @@ export default function Header() {
   const onSignOut = async () => {
     try {
       await logOut();
-      window.location.reload();
+      router.push("/");
     } catch (e) {
       console.error(e);
     }
@@ -67,15 +63,28 @@ export default function Header() {
             {user ? (
               <div className="flex items-center gap-4">
                 <Button
+                  tooltip="History"
+                  tooltipOptions={{
+                    position: "bottom",
+                  }}
                   outlined
                   onClick={() => router.push("/history")}
                   icon="pi pi-history"
                   text
                   size="small"
                 />
-                <BiUserCircle size={24} />
-                <p>{user.businessName}</p>
                 <Button
+                  label={user.businessName}
+                  icon="pi pi-user"
+                  text
+                  severity="secondary"
+                  onClick={() => router.push("/profile")}
+                />
+                <Button
+                  tooltip="Logout"
+                  tooltipOptions={{
+                    position: "bottom",
+                  }}
                   outlined
                   onClick={onSignOut}
                   icon="pi pi-sign-out"
@@ -88,9 +97,9 @@ export default function Header() {
               <>
                 <Button
                   label="Login"
-                  onClick={() => setOpenLogin(true)}
                   icon="pi pi-sign-in"
                   size="small"
+                  onClick={() => setOpenLogin(true)}
                 />
               </>
             )}
@@ -98,16 +107,7 @@ export default function Header() {
         }
       />
 
-      <Dialog
-        header="Login"
-        visible={openLogin}
-        style={{ width: "50vw" }}
-        footer={null}
-        breakpoints={{ "960px": "75vw", "641px": "100vw" }}
-        onHide={() => setOpenLogin(false)}
-      >
-        <LoginForm />
-      </Dialog>
+      <LoginForm openLogin={openLogin} setOpenLogin={setOpenLogin} />
     </>
   );
 }

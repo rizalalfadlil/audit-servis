@@ -1,7 +1,7 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { firebase } from "../firebase";
 
-const {auth, db} = firebase
+const { auth, db } = firebase;
 
 import {
   signInWithEmailAndPassword,
@@ -14,7 +14,10 @@ export const login = async (email: string, password: string) => {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     return user;
   } catch (error) {
-    throw new Error(error.message);
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error(String(error));
   }
 };
 
@@ -34,7 +37,10 @@ export const register = async (
     await setDoc(userDocRef, { businessName, address }, { merge: true });
     return user;
   } catch (error) {
-    throw new Error(error.message);
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error(String(error));
   }
 };
 
@@ -57,7 +63,10 @@ export const getCurrentUser = async () => {
       throw new Error("User not logged in");
     }
   } catch (error) {
-    throw new Error(error.message);
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error(String(error));
   }
 };
 
@@ -65,6 +74,9 @@ export const logOut = async () => {
   try {
     await signOut(auth);
   } catch (error) {
-    throw new Error(error.message);
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error(String(error));
   }
 };

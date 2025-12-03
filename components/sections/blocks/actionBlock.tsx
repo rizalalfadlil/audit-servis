@@ -7,36 +7,24 @@ import { Button } from "primereact/button";
 import { Tag } from "primereact/tag";
 import { Panel } from "primereact/panel";
 import { FaTools } from "react-icons/fa";
+import { Action } from "@/types/service";
 
 const ActionBlock = ({
   actions,
-  setActions,
+  removeAction,
 }: {
-  actions: {
-    name: string;
-    type: string;
-    cost: number;
-  }[];
-  setActions: (
-    actions: {
-      name: string;
-      type: string;
-      cost: number;
-    }[]
-  ) => void;
+  actions: Action[];
+  removeAction: (index: number) => void;
 }) => {
-  const removeAction = (index: number) => {
-    const newActions = [...actions];
-    newActions.splice(index, 1);
-    setActions(newActions);
-  };
   return (
-    <Panel header={
-            <div className="flex items-center gap-4">
-              <FaTools size={24} />
-              <p>Required Actions</p>
-            </div>
-          }>
+    <Panel
+      header={
+        <div className="flex items-center gap-4">
+          <FaTools size={24} />
+          <p>Required Actions</p>
+        </div>
+      }
+    >
       <DataTable
         dataKey="index"
         value={actions.map((action, index) => ({ ...action, index }))}
