@@ -8,41 +8,15 @@ import ProblemBlock from "../blocks/problemBlock";
 import ActionBlock from "../blocks/actionBlock";
 import ActionProblemForm from "../forms/actionProblemForm";
 import ImageUploads from "../blocks/imageUploads";
-import { Problem } from "@/types/service";
+import { DiagnosisResult, InitialCheck, Problem } from "@/types/service";
 
-export default function ExploreSection() {
-  const [problems, setProblems] = useState<Problem[]>([
-    {
-      name: "Problem 1",
-      level: "low",
-    },
-    {
-      name: "Problem 2",
-      level: "moderate",
-    },
-    {
-      name: "Problem 3",
-      level: "critical",
-    },
-  ]);
+export default function ExploreSection({diagnosisResult, initialCheck}:{diagnosisResult:DiagnosisResult, initialCheck:InitialCheck}) {
+const {problems, actions} = diagnosisResult;
+const {deviceName, complaint} = initialCheck;
 
-  const [actions, setActions] = useState([
-    {
-      name: "Action 1",
-      type: "service",
-      cost: 100000,
-    },
-    {
-      name: "Action 2",
-      type: "product",
-      cost: 200000,
-    },
-    {
-      name: "Action 3",
-      type: "service",
-      cost: 300000,
-    },
-  ]);
+function setProblems(){}
+function setActions(){}
+
 
   return (
     <section className="space-y-8">
@@ -53,8 +27,8 @@ export default function ExploreSection() {
           <>
             <BsLaptop size={48} />
             <div className="px-4">
-              <p>Device Information</p>
-              <p className="text-xs text-gray-500">Device Information</p>
+              <p>{deviceName || "Device Name"}</p>
+              <p className="text-xs text-gray-500">{complaint || "complaint"}</p>
             </div>
           </>
         }

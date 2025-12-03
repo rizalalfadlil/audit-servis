@@ -4,48 +4,25 @@ import { DataTable } from "primereact/datatable";
 import { Toolbar } from "primereact/toolbar";
 import { useState } from "react";
 import { BsLaptop } from "react-icons/bs";
+import { DiagnosisResult, InitialCheck, Problem } from "@/types/service"
 
-export default function ResultSection() {
-    const [problems, setProblems] = useState<string[]>(["Problem 1", "Problem 2", "Problem 3"])
-    const [actions, setActions] = useState([
-        {
-            name: "Action 1",
-            type: "service",
-            cost: 100000,
-        },
-        {
-            name: "Action 2",
-            type: "product",
-            cost: 200000,
-        },
-        {
-            name: "Action 3",
-            type: "service",
-            cost: 300000,
-        },
-    ]);
 
-    const images = [
-        "https://picsum.photos/200/300",
-        "https://picsum.photos/200",
-        "https://picsum.photos/200/300",
-    ]
-
+export default function ResultSection({ diagnosisResult, initialCheck }: { diagnosisResult: DiagnosisResult, initialCheck: InitialCheck }) {
+    const {problems, actions, images} = diagnosisResult
+    const { customerName, customerContact, deviceName, complaint } = initialCheck
     return (
         <div className="py-8 grid gap-8">
             <div className="flex items-center gap-4">
                 <BsLaptop size={80} />
                 <div className="px-4">
-                    <p>Device Information</p>
-                    <p className="text-xs text-gray-500">Device Information</p>
+                    <p>{deviceName || "Device Name"}</p>
+                    <p className="text-xs text-gray-500">{complaint || "complaint"}</p>
                 </div>
             </div>
             <p className="text-lg font-bold">Problems Found</p>
-            <DataTable value={problems.map((problem, index) => ({
-                name: problem,
-                index: index,
-            }))}>
+            <DataTable value={problems}>
                 <Column field="name" header="name" />
+                <Column field="level" header="level" />
             </DataTable>
             <p className="text-lg font-bold">Actions Required</p>
             <DataTable value={actions}>

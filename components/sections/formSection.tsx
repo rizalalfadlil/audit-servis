@@ -4,8 +4,12 @@ import { FloatLabel } from "primereact/floatlabel";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
+import { InitialCheck } from "@/types/service";
+import { SetCheckIn } from "@/types/service-react";
 
-const FormSection = () => {
+const FormSection = ({ getCheckIn, setCheckIn }: { getCheckIn: InitialCheck, setCheckIn: SetCheckIn }) => {
+  const { customerName, customerContact, deviceName, complaint } = getCheckIn;
+  const { setCustomerName, setCustomerContact, setDeviceName, setComplaint } = setCheckIn;
   return (
     <section>
       <p className="text-2xl font-bold">Step 1</p>
@@ -18,21 +22,21 @@ const FormSection = () => {
           <div className="grid gap-8 **:w-full py-4">
             <p className="text-xl font-bold">User Information</p>
             <FloatLabel>
-              <InputText id="name" />
+              <InputText id="name" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
               <label htmlFor="name">Name</label>
             </FloatLabel>
             <FloatLabel>
-              <InputText id="contact" />
+              <InputText id="contact" value={String(customerContact)} onChange={(e) => setCustomerContact(e.target.value)} />
               <label htmlFor="contact">Contact</label>
             </FloatLabel>
             <p className="text-xl font-bold">Device Information</p>
             <FloatLabel>
-              <InputText id="device_name" />
+              <InputText id="device_name" value={deviceName} onChange={(e) => setDeviceName(e.target.value)} />
               <label htmlFor="device_name">Device Name</label>
             </FloatLabel>
             <FloatLabel>
-              <InputTextarea id="problem" />
-              <label htmlFor="problem">Problem</label>
+              <InputTextarea id="complaint" value={complaint} onChange={(e) => setComplaint(e.target.value)} />
+              <label htmlFor="complaint">Complaint</label>
             </FloatLabel>
           </div>
           <Button label="Submit" className="w-full sm:w-fit" />
