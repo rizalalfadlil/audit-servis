@@ -24,6 +24,7 @@ export default function Header() {
             businessName: res.businessName,
             address: res.address,
             email: res.email,
+            logoUrl: res.logoUrl,
           });
           
         } catch (e) {
@@ -49,13 +50,14 @@ export default function Header() {
   return (
     <>
       <Toolbar
-        start={
-          <IoHome
+        start={<>
+        <IoHome
             size={24}
             onClick={() => {
               router.push("/");
             }}
           />
+        </>
         }
         className="fixed w-full top-0 z-50"
         end={
@@ -63,7 +65,7 @@ export default function Header() {
             {user ? (
               <div className="flex items-center gap-4">
                 <Button
-                  tooltip="History"
+                  tooltip="Riwayat"
                   tooltipOptions={{
                     position: "bottom",
                   }}
@@ -74,6 +76,11 @@ export default function Header() {
                   size="small"
                 />
                 <Button
+                  tooltip="Perbarui profil"
+                  tooltipOptions={{
+                    position: "bottom",
+                  }}
+                  outlined
                   label={user.businessName}
                   icon="pi pi-user"
                   text
@@ -81,7 +88,7 @@ export default function Header() {
                   onClick={() => router.push("/profile")}
                 />
                 <Button
-                  tooltip="Logout"
+                  tooltip="Keluar"
                   tooltipOptions={{
                     position: "bottom",
                   }}

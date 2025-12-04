@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "../components/sections/blocks/header";
+import Header from "../components/ui/layouts/headerLayout";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "primeicons/primeicons.css";
 
@@ -31,9 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <main className="min-h-dvh p-4 sm:p-8 pt-40 sm:pt-40 max-w-7xl mx-auto">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );

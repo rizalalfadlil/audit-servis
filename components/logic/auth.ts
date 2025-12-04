@@ -1,23 +1,27 @@
-/* eslint-disable no-console */
 import { login, register } from "@/backend/controller/auth";
+import { translateFirebaseMessage } from "@/utils/transform";
 import React from "react";
 
-export type MessageState = { color: string; text: string } | null;
+export type MessageState = { type: "success" | "error"; text: string } | null;
 export type StartMessageFn = (
   message: string,
-  type?: "success" | "failed",
+  type?: "success" | "error",
   duration?: number
 ) => void;
 
+export type ErrorState = {
+  code: string;
+  message: string;
+};
 export const createStartMessage = (
   setMessage: React.Dispatch<React.SetStateAction<MessageState>>
 ): StartMessageFn => {
   return (
     message: string,
-    type: "success" | "failed" = "failed",
+    type: "success" | "error" = "error",
     duration: number = 2000
   ) => {
-    setMessage({ text: message, color: type === "failed" ? "red" : "green" });
+    setMessage({ text: message, type: type });
     setTimeout(() => {
       setMessage(null);
     }, duration);
@@ -27,13 +31,14 @@ export const createStartMessage = (
 export async function handleAuthSubmit(params: {
   registerMode: boolean;
   email: string;
-  logo:File|Blob | null;
+  logo: File | Blob | null;
   password: string;
   businessName: string;
   address: string;
   startMessage: StartMessageFn;
   setRegisterMode: (v: boolean) => void;
   push: (path: string) => void;
+  setLoading: (v: boolean) => void;
   close: () => void;
 }) {
   const {
@@ -46,6 +51,7 @@ export async function handleAuthSubmit(params: {
     startMessage,
     setRegisterMode,
     push,
+    setLoading,
     close,
   } = params;
 
@@ -56,12 +62,18 @@ export async function handleAuthSubmit(params: {
     }
 
     try {
+      setLoading(true);
       await register(email, password, businessName, address, logo);
       startMessage("Register Berhasil", "success");
       setRegisterMode(false);
     } catch (e) {
-      console.log(e);
-      startMessage("Register Gagal", "failed");
+      const error = e as ErrorState;
+      startMessage(
+        `Register gagal, ${translateFirebaseMessage(error.code)}`,
+        "error"
+      );
+    } finally {
+      setLoading(false);
     }
   } else {
     if (!email || !password) {
@@ -69,14 +81,19 @@ export async function handleAuthSubmit(params: {
       return;
     }
     try {
-      const res = await login(email, password);
-      console.log(res);
+      setLoading(true);
+      await login(email, password);
       startMessage("Login Berhasil", "success");
       close();
       push("/app");
     } catch (e) {
-      console.log(e);
-      startMessage("Login Gagal: username atau password salah", "failed");
+      const error = e as ErrorState;
+      startMessage(
+        `Login Gagal, ${translateFirebaseMessage(error.code)}`,
+        "error"
+      );
+    } finally {
+      setLoading(false);
     }
   }
 }

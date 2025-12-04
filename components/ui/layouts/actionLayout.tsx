@@ -1,15 +1,13 @@
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { FaX } from "react-icons/fa6";
-import { InputText } from "primereact/inputtext";
-import { useState } from "react";
 import { Button } from "primereact/button";
 import { Tag } from "primereact/tag";
 import { Panel } from "primereact/panel";
 import { FaTools } from "react-icons/fa";
 import { Action } from "@/types/service";
+import { formatCurrency } from "@/utils/transform";
 
-const ActionBlock = ({
+const ActionLayout = ({
   actions,
   removeAction,
 }: {
@@ -21,17 +19,18 @@ const ActionBlock = ({
       header={
         <div className="flex items-center gap-4">
           <FaTools size={24} />
-          <p>Required Actions</p>
+          <p>Tindakan yang diperlukan</p>
         </div>
       }
     >
       <DataTable
+        emptyMessage="tidak ada data"
         dataKey="index"
         value={actions.map((action, index) => ({ ...action, index }))}
       >
         <Column
           field="name"
-          header="name"
+          header="nama"
           body={(data) => (
             <div className="flex items-center gap-2">
               <span>{data.name}</span>
@@ -41,10 +40,10 @@ const ActionBlock = ({
         />
         <Column
           field="cost"
-          header="cost"
+          header="biaya"
           body={(data) => (
             <div className="flex items-center justify-between">
-              <span>{data.cost}</span>
+              <span>{formatCurrency(data.cost)}</span>
               <Button
                 icon="pi pi-times"
                 type="button"
@@ -66,4 +65,4 @@ const ActionBlock = ({
   );
 };
 
-export default ActionBlock;
+export default ActionLayout;

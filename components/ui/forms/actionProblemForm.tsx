@@ -16,9 +16,9 @@ export default function ActionProblemForm({
   addAction: (action: Action) => void;
 }) {
   const [problemName, setProblemName] = useState("");
-  const [problemLevel, setProblemLevel] = useState<Problem["level"]>("low");
+  const [problemLevel, setProblemLevel] = useState<Problem["level"]>("rendah");
   const [actionName, setActionName] = useState("");
-  const [actionType, setActionType] = useState<Action["type"]>("service");
+  const [actionType, setActionType] = useState<Action["type"]>("jasa");
   const [actionCost, setActionCost] = useState(0);
 
   const updateProblem = () => {
@@ -39,14 +39,14 @@ export default function ActionProblemForm({
   };
   const clear = () => {
     setProblemName("");
-    setProblemLevel("low");
+    setProblemLevel("rendah");
     setActionName("");
-    setActionType("service");
+    setActionType("jasa");
     setActionCost(0);
   };
   return (
     <TabView>
-      <TabPanel header="Problem">
+      <TabPanel header="Kerusakan">
         <div className="py-8 grid md:flex items-start gap-8 w-full items-center">
           <FloatLabel className="grow">
             <InputText
@@ -55,27 +55,27 @@ export default function ActionProblemForm({
               value={problemName}
               onChange={(e) => setProblemName(e.target.value)}
             />
-            <label htmlFor="problemName">Problem Name</label>
+            <label htmlFor="problemName">Nama Kerusakan</label>
           </FloatLabel>
           <FloatLabel className="grow *:w-full">
             <Dropdown
               inputId="problemLevel"
-              options={["low", "moderate", "high"]}
+              options={["rendah", "sedang", "tinggi"]}
               className="grow"
               value={problemLevel}
               onChange={(e) => setProblemLevel(e.value)}
             />
-            <label htmlFor="problemLevel">Problem Level</label>
+            <label htmlFor="problemLevel">Tingkat Kerusakan</label>
           </FloatLabel>
           <Button
-            label="Add"
+            label="tambahkan"
             className="grow"
             disabled={!problemName}
             onClick={updateProblem}
           />
         </div>
       </TabPanel>
-      <TabPanel header="Action">
+      <TabPanel header="Perbaikan">
         <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-8 py-4 items-center">
           <FloatLabel className=" *:w-full">
             <InputText
@@ -83,19 +83,18 @@ export default function ActionProblemForm({
               id="actionName"
               value={actionName}
               onChange={(e) => setActionName(e.target.value)}
-              placeholder="Action Name"
             />
-            <label htmlFor="actionName">Action Name</label>
+            <label htmlFor="actionName">Nama Tindakan</label>
           </FloatLabel>
           <FloatLabel className="grow *:w-full">
             <Dropdown
               inputId="actionType"
-              options={["service", "product"]}
+              options={["jasa", "barang"]}
               className="grow"
               value={actionType}
               onChange={(e) => setActionType(e.value)}
             />
-            <label htmlFor="actionType">Action Type</label>
+            <label htmlFor="actionType">Jenis</label>
           </FloatLabel>
           <FloatLabel className="grow *:w-full">
             <InputNumber
@@ -105,10 +104,10 @@ export default function ActionProblemForm({
               value={actionCost}
               onChange={(e) => setActionCost(Number(e.value))}
             />
-            <label htmlFor="actionCost">Action Cost</label>
+            <label htmlFor="actionCost">Biaya</label>
           </FloatLabel>
           <Button
-            label="Add"
+            label="tambahkan"
             disabled={!actionName || !actionType}
             onClick={updateAction}
           />

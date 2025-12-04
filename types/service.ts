@@ -1,7 +1,6 @@
 export interface ServiceReport {
   initialCheck: InitialCheck;
   diagnosisResult: DiagnosisResult;
-
 }
 export type InitialCheck = {
   customerName: string;
@@ -18,10 +17,10 @@ export type DiagnosisResult = {
 };
 export type Problem = {
   name: string;
-  level: "low" | "moderate" | "critical";
+  level: "rendah" | "sedang" | "critical";
 };
 export type Action = {
   name: string;
-  type: "service" | "product";
+  type: "jasa" | "barang";
   cost: number;
 };

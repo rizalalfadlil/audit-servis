@@ -1,27 +1,40 @@
 import { ServiceReport } from "@/types/service";
-import { toBlob } from "@/utils/transform";
-import { getCloudinaryConfig } from "../cloudinary";
+import { addDoc, collection, deleteDoc, getDocs } from "firebase/firestore";
+import { firebase } from "../firebase";
+import { uploadImageToCloudinary } from "./image";
 
-export const createServiceReport = (serviceReport: ServiceReport) => {
-  // eslint-disable-next-line no-console
-  console.log(serviceReport);
+export const createServiceReport = async (serviceReport: ServiceReport) => {
+  const user = firebase.auth.currentUser;
+  if (!user) throw new Error("User not logged in");
+  const { db } = firebase;
+  serviceReport.diagnosisResult.images = await Promise.all(
+    serviceReport.diagnosisResult.images.map(async (image) => {
+      return await uploadImageToCloudinary(image);
+    })
+  );
+  const res = await addDoc(
+    collection(db, "users", user.uid, "history"),
+    serviceReport
+  );
+  return res;
 };
 
-export async function uploadImageToCloudinary(
-  file: File | Blob | string
-): Promise<string> {
-  const { cloudName, uploadPreset } = getCloudinaryConfig();
-  if (!cloudName || !uploadPreset)
-    throw new Error("Cloudinary is not configured");
-  const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
-  const form = new FormData();
-  const blob = await toBlob(file);
-  form.append("file", blob);
-  form.append("upload_preset", uploadPreset);
-  const res = await fetch(url, { method: "POST", body: form });
-  if (!res.ok) throw new Error(`Cloudinary upload failed: ${res.status}`);
-  const json = (await res.json()) as { secure_url?: string; url?: string };
-  const out = json.secure_url || json.url;
-  if (!out) throw new Error("Missing URL from Cloudinary response");
-  return out;
-}
+
+
+export const getHistory = async () => {
+  const user = firebase.auth.currentUser;
+  if (!user) throw new Error("User not logged in");
+  const { db } = firebase;
+  const res = await getDocs(collection(db, "users", user.uid, "history"));
+  return res.docs.map((doc) => doc.data());
+};
+
+export const clearHistory = async () => {
+  const user = firebase.auth.currentUser;
+  if (!user) throw new Error("User not logged in");
+  const { db } = firebase;
+  const historySnapshot = await getDocs(
+    collection(db, "users", user.uid, "history")
+  );
+  await Promise.all(historySnapshot.docs.map((doc) => deleteDoc(doc.ref)));
+};

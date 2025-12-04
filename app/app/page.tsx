@@ -1,8 +1,8 @@
 "use client";
 
-import FormSection from "@/components/sections/formSection";
-import ExploreSection from "@/components/sections/exploreSection";
-import ResultSection from "@/components/sections/resultSection";
+import FormStep from "@/components/ui/steps/formStep";
+import DiagnosisStep from "@/components/ui/steps/diagnosisStep";
+import ResultStep from "@/components/ui/steps/resultStep";
 import { Stepper } from "primereact/stepper";
 import { StepperPanel } from "primereact/stepperpanel";
 import { useRef, useState } from "react";
@@ -11,10 +11,9 @@ import {
   DiagnosisResult,
   InitialCheck,
   Problem,
-  ServiceReport,
 } from "@/types/service";
 import { SetCheckIn } from "@/types/service-react";
-import { createServiceReport } from "@/backend/controller/service";
+import Crop from "@/components/ui/layouts/crop";
 
 export default function Page() {
   const stepperRef = useRef<Stepper>(null);
@@ -76,22 +75,21 @@ export default function Page() {
     next: () => stepperRef.current?.nextCallback(),
     prev: () => stepperRef.current?.prevCallback(),
   };
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleSubmit = () => {
-    const data: ServiceReport = {
-      initialCheck: getCheckIn,
-      diagnosisResult: getDiagnosisResult,
-    };
-    createServiceReport(data);
-  };
+
   return (
-    <div>
+    <Crop>
       <Stepper ref={stepperRef}>
         <StepperPanel header="Form">
-          <FormSection getCheckIn={getCheckIn} setCheckIn={setCheckIn} next={navigate.next} />
+          <FormStep
+            getCheckIn={getCheckIn}
+            setCheckIn={setCheckIn}
+            next={navigate.next}
+          />
         </StepperPanel>
-        <StepperPanel header="Explore">
-          <ExploreSection
+        <StepperPanel header="Diagnosis">
+          <DiagnosisStep
+            status={status}
+            setStatus={setStatus}
             diagnosisResult={getDiagnosisResult}
             initialCheck={getCheckIn}
             setDiagnosisResult={setDiagnosisResult}
@@ -99,13 +97,13 @@ export default function Page() {
           />
         </StepperPanel>
         <StepperPanel header="Result">
-          <ResultSection
+          <ResultStep
             diagnosisResult={getDiagnosisResult}
             initialCheck={getCheckIn}
             prev={navigate.prev}
           />
         </StepperPanel>
       </Stepper>
-    </div>
+    </Crop>
   );
 }

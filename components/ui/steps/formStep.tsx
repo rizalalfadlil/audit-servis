@@ -1,5 +1,4 @@
 import { Divider } from "primereact/divider";
-import { BsLaptop } from "react-icons/bs";
 import { FloatLabel } from "primereact/floatlabel";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
@@ -7,27 +6,41 @@ import { Button } from "primereact/button";
 import { InitialCheck } from "@/types/service";
 import { SetCheckIn } from "@/types/service-react";
 
-const FormSection = ({ getCheckIn, setCheckIn, next }: { getCheckIn: InitialCheck, setCheckIn: SetCheckIn, next: () => void }) => {
+const FormStep = ({
+  getCheckIn,
+  setCheckIn,
+  next,
+}: {
+  getCheckIn: InitialCheck;
+  setCheckIn: SetCheckIn;
+  next: () => void;
+}) => {
   const { customerName, customerContact, deviceName, complaint } = getCheckIn;
-  const { setCustomerName, setCustomerContact, setDeviceName, setComplaint } = setCheckIn;
+  const { setCustomerName, setCustomerContact, setDeviceName, setComplaint } =
+    setCheckIn;
   return (
     <section>
-      <p className="text-2xl font-bold">Step 1</p>
+      <div>
+        <p className="text-2xl font-bold">Formulir Pemeriksaan</p>
+        <p>
+          Masukkan informasi pelanggan, perangkat yang akan di diagnosis, dan
+          keluhan yang dialami.
+        </p>
+      </div>
       <Divider />
       <div className="grid sm:grid-cols-3 gap-8 py-8">
-        <div className="flex justify-center items-center bg-gray-50 border border-gray-200 rounded-lg">
-          <BsLaptop className="text-4xl" size={100} />
+        <div className="flex justify-center items-center bg-contain bg-center bg-no-repeat" style={{ backgroundImage: "url(/graphics/phone.svg)" }}>
         </div>
         <div className="space-y-8 sm:col-span-2">
           <div className="grid gap-8 **:w-full py-4">
-            <p className="text-xl font-bold">User Information</p>
+            <p className="text-xl font-bold">Informasi Pelanggan</p>
             <FloatLabel>
               <InputText
                 id="name"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
               />
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">nama</label>
             </FloatLabel>
             <FloatLabel>
               <InputText
@@ -35,16 +48,18 @@ const FormSection = ({ getCheckIn, setCheckIn, next }: { getCheckIn: InitialChec
                 value={String(customerContact)}
                 onChange={(e) => setCustomerContact(e.target.value)}
               />
-              <label htmlFor="contact">Contact</label>
+              <label htmlFor="contact">
+                Kontak Pelanggan (email atau nomor telepon)
+              </label>
             </FloatLabel>
-            <p className="text-xl font-bold">Device Information</p>
+            <p className="text-xl font-bold">Informasi Perangkat</p>
             <FloatLabel>
               <InputText
                 id="device_name"
                 value={deviceName}
                 onChange={(e) => setDeviceName(e.target.value)}
               />
-              <label htmlFor="device_name">Device Name</label>
+              <label htmlFor="device_name">Nama Perangkat</label>
             </FloatLabel>
             <FloatLabel>
               <InputTextarea
@@ -52,14 +67,20 @@ const FormSection = ({ getCheckIn, setCheckIn, next }: { getCheckIn: InitialChec
                 value={complaint}
                 onChange={(e) => setComplaint(e.target.value)}
               />
-              <label htmlFor="complaint">Complaint</label>
+              <label htmlFor="complaint">Keluhan</label>
             </FloatLabel>
           </div>
-          <Button label="Next" className="w-full sm:w-fit" onClick={next} />
+          <Button
+            label="Selanjutnya"
+            icon="pi pi-arrow-right"
+            iconPos="right"
+            className="w-full sm:w-fit"
+            onClick={next}
+          />
         </div>
       </div>
     </section>
   );
 };
 
-export default FormSection;
+export default FormStep;

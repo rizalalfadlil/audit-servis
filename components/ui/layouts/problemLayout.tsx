@@ -1,14 +1,11 @@
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { FaX } from "react-icons/fa6";
-import { InputText } from "primereact/inputtext";
-import { useState } from "react";
 import { Button } from "primereact/button";
 import { Panel } from "primereact/panel";
 import { TiWarning } from "react-icons/ti";
 import { Problem } from "@/types/service";
 
-const ProblemBlock = ({
+const ProblemLayout = ({
   problems,
   removeProblem,
 }: {
@@ -20,18 +17,19 @@ const ProblemBlock = ({
       header={
         <div className="flex items-center gap-4">
           <TiWarning size={24} />
-          <p>Problems Found</p>
+          <p>Masalah yang ditemukan</p>
         </div>
       }
     >
       <DataTable
+        emptyMessage="tidak ada data"
         dataKey="index"
         value={problems.map((problem, index) => ({
           ...problem,
           index: index,
         }))}
       >
-        <Column field="name" header="name" />
+        <Column field="name" header="nama" />
         <Column
           field="level"
           header="level"
@@ -55,4 +53,4 @@ const ProblemBlock = ({
   );
 };
 
-export default ProblemBlock;
+export default ProblemLayout;

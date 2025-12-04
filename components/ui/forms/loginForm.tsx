@@ -6,10 +6,11 @@ import { FloatLabel } from "primereact/floatlabel";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Password } from "primereact/password";
-import React, { useState } from "react";
+import { useState } from "react";
 import { createStartMessage, handleAuthSubmit } from "@/components/logic/auth";
 import { Dialog } from "primereact/dialog";
 import { FileUpload } from "primereact/fileupload";
+import { Message } from "primereact/message";
 
 export default function LoginForm({
   openLogin,
@@ -24,16 +25,18 @@ export default function LoginForm({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registerMode, setRegisterMode] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [logo, setLogo] = useState<File | Blob | null>(null);
 
   const [message, setMessage] = useState<{
-    color: string;
+    type: "success" | "error";
     text: string;
-  } | null>({ color: "", text: "" });
+  } | null>({ type: "error", text: "" });
 
   const startMessage = createStartMessage(setMessage);
   const handleSubmit = async () => {
     await handleAuthSubmit({
+      setLoading,
       close: () => setOpenLogin(false),
       registerMode,
       email,
@@ -49,19 +52,24 @@ export default function LoginForm({
 
   return (
     <Dialog
-      header="Login"
       visible={openLogin}
+      draggable={false}
       style={{ width: "50vw" }}
-      footer={null}
       breakpoints={{ "960px": "75vw", "641px": "100vw" }}
       onHide={() => setOpenLogin(false)}
     >
-      <div className="grid lg:grid-cols-2 gap-4">
-        <div className="hidden lg:block bg-gray-200 rounded-lg">
-
-        </div>
+      <div className="grid lg:grid-cols-2 gap-8">
+        <div
+          className="hidden lg:block rounded-lg bg-contain bg-center bg-no-repeat"
+          style={{ backgroundImage: "url(/graphics/login.svg)" }}
+        ></div>
         <div className="grid gap-8 py-8 **:w-full">
-          <p className="text-lg font-bold">{registerMode ? "Register" : "Login"}</p>
+          <p className="text-lg font-bold">
+            {registerMode ? "Register" : "Login"}
+          </p>
+          {message?.text && (
+            <Message severity={message?.type} text={message?.text} />
+          )}
           {registerMode && (
             <>
               <FloatLabel>
@@ -72,7 +80,7 @@ export default function LoginForm({
                   maxLength={50}
                   minLength={0}
                 />
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Nama Usaha Anda</label>
               </FloatLabel>
               <FloatLabel>
                 <InputTextarea
@@ -82,17 +90,20 @@ export default function LoginForm({
                   maxLength={100}
                   minLength={0}
                 />
-                <label htmlFor="address">Address</label>
+                <label htmlFor="address">Alamat</label>
               </FloatLabel>
-              <FileUpload
-                name="logo"
-                mode="basic"
-                auto
-                className="w-full"
-                accept="image/png"
-                maxFileSize={1000000}
-                onSelect={(e) => setLogo(e.files[0])}
-              />
+              <div>
+                <p className="text-sm p-2">Logo</p>
+                <FileUpload
+                  name="logo"
+                  mode="basic"
+                  auto
+                  className="w-full"
+                  accept="image/png"
+                  maxFileSize={1000000}
+                  onSelect={(e) => setLogo(e.files[0])}
+                />
+              </div>
               <Divider />
             </>
           )}
@@ -115,30 +126,36 @@ export default function LoginForm({
           </FloatLabel>
 
           <p className="text-end select-none">
-            {registerMode
-              ? "Already have Account? "
-              : "Don't have an Account? "}
+            {registerMode ? "Sudah Punya Akun? " : "Belum Punya Akun? "}
             <span
               onClick={() => setRegisterMode(!registerMode)}
               className="text-blue-500 hover:border-b cursor-pointer"
             >
-              {registerMode ? "Log in" : "Register Now"}
+              {registerMode ? "Masuk" : "Daftar Sekarang"}
             </span>
           </p>
           <div>
-            <Button label="Log in" onClick={handleSubmit} />
-            <p className="text-xs mt-2" style={{ color: message?.color }}>
-              {message?.text}
+            <Button
+              label={registerMode ? "Daftar" : "Masuk"}
+              onClick={handleSubmit}
+              loading={loading}
+            />
+          </div>
+          <div>
+            <Button
+              label="Lanjutkan Tanpa Akun"
+              loading={loading}
+              severity="secondary"
+              onClick={() => {
+                router.push("/app");
+                setOpenLogin(false);
+              }}
+            />
+            <p className="text-sm mt-1">
+              login diperlukan untuk menyimpan riwayat servis dan membuka
+              fitur lainnya
             </p>
           </div>
-          <Button
-            label="Continue Without Account"
-            severity="secondary"
-            onClick={() => {
-              close();
-              router.push("/app");
-            }}
-          />
         </div>
       </div>
     </Dialog>

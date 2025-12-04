@@ -8,7 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { uploadImageToCloudinary } from "./service";
+import { uploadImageToCloudinary } from "./image";
 
 export const login = async (email: string, password: string) => {
   try {
@@ -34,7 +34,7 @@ export const updateProfile = async (
     }
 
     const userDocRef = doc(db, "users", user.uid);
-    const updateData: { [key: string]: any } = {};
+    const updateData: { [key: string]: string } = {};
 
     if (businessName !== undefined) {
       updateData.businessName = businessName;
@@ -60,7 +60,6 @@ export const updateProfile = async (
   }
 };
 
-
 export const register = async (
   email: string,
   password: string,
@@ -77,7 +76,11 @@ export const register = async (
 
     const logoUrl = await uploadImageToCloudinary(logo);
     const userDocRef = doc(db, "users", user.uid);
-    await setDoc(userDocRef, { businessName, address, logoUrl }, { merge: true });
+    await setDoc(
+      userDocRef,
+      { businessName, address, logoUrl },
+      { merge: true }
+    );
     return user;
   } catch (error) {
     if (error instanceof Error) {
@@ -123,4 +126,8 @@ export const logOut = async () => {
     }
     throw new Error(String(error));
   }
+};
+
+export const checkLogin = (): boolean => {
+  return auth.currentUser !== null;
 };
