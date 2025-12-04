@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dokumentasi Proyek Aplikasi Pelaporan Layanan
 
-## Getting Started
+Aplikasi ini adalah platform berbasis web yang dirancang untuk membantu bisnis dalam melaporkan dan mengelola masalah layanan. Pengguna dapat membuat laporan, mengunggah gambar sebagai bukti, dan menerima saran atau tindakan yang direkomendasikan.
 
-First, run the development server:
+## Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-   **Autentikasi Pengguna**: Sistem login dan registrasi untuk pemilik bisnis.
+-   **Pelaporan Masalah**: Formulir untuk mengirimkan detail masalah layanan.
+-   **Unggah Gambar**: Pengguna dapat mengunggah gambar terkait masalah (menggunakan Cloudinary).
+-   **Penyimpanan Data**: Laporan layanan disimpan dan dikelola menggunakan Firestore.
+-   **Tampilan Hasil**: Menampilkan hasil atau saran berdasarkan laporan yang dikirim.
+-   **Ekspor ke PDF**: Kemampuan untuk mengekspor laporan ke dalam format PDF (fitur dalam pengembangan).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Teknologi yang Digunakan
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-   **Frontend**: Next.js (React) & TypeScript
+-   **Styling**: Tailwind CSS
+-   **Backend**: Next.js API Routes
+-   **Database**: Google Firestore
+-   **Penyimpanan File**: Cloudinary
+-   **Bahasa**: TypeScript
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Struktur Proyek
 
-## Learn More
+-   `app/`: Berisi halaman-halaman utama aplikasi (menggunakan App Router Next.js).
+-   `backend/`: Logika sisi server, termasuk controller untuk otentikasi dan layanan.
+-   `components/`: Komponen-komponen React yang dapat digunakan kembali.
+-   `public/`: Aset statis seperti gambar dan ikon.
+-   `types/`: Definisi tipe TypeScript untuk konsistensi data.
+-   `utils/`: Fungsi-fungsi bantuan.
 
-To learn more about Next.js, take a look at the following resources:
+## Cara Menjalankan Proyek
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Clone Repository**
+    ```bash
+    git clone [URL_REPOSITORY_ANDA]
+    cd [NAMA_FOLDER_PROYEK]
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+3.  **Konfigurasi Environment Variables**
+    Buat file `.env.local` di root proyek dan isi dengan kredensial yang dibutuhkan.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```
+    # Kredensial Firebase
+    NEXT_PUBLIC_FIREBASE_API_KEY=...
+    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=...
+    NEXT_PUBLIC_FIREBASE_PROJECT_ID=...
+    NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=...
+    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=...
+    NEXT_PUBLIC_FIREBASE_APP_ID=...
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    # Kredensial Cloudinary
+    NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=...
+    NEXT_PUBLIC_CLOUDINARY_API_KEY=...
+    CLOUDINARY_API_SECRET=...
+    ```
+
+4.  **Jalankan Development Server**
+    ```bash
+    npm run dev
+    ```
+
+    Buka [http://localhost:3000](http://localhost:3000) di browser Anda.

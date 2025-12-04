@@ -27,6 +27,7 @@ export const createStartMessage = (
 export async function handleAuthSubmit(params: {
   registerMode: boolean;
   email: string;
+  logo:File|Blob | null;
   password: string;
   businessName: string;
   address: string;
@@ -38,6 +39,7 @@ export async function handleAuthSubmit(params: {
   const {
     registerMode,
     email,
+    logo,
     password,
     businessName,
     address,
@@ -48,13 +50,13 @@ export async function handleAuthSubmit(params: {
   } = params;
 
   if (registerMode) {
-    if (!email || !password || !businessName || !address) {
+    if (!email || !password || !businessName || !address || !logo) {
       startMessage("semua field harus diisi!");
       return;
     }
 
     try {
-      await register(email, password, businessName, address);
+      await register(email, password, businessName, address, logo);
       startMessage("Register Berhasil", "success");
       setRegisterMode(false);
     } catch (e) {

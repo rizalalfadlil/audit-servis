@@ -9,6 +9,7 @@ import { Password } from "primereact/password";
 import React, { useState } from "react";
 import { createStartMessage, handleAuthSubmit } from "@/components/logic/auth";
 import { Dialog } from "primereact/dialog";
+import { FileUpload } from "primereact/fileupload";
 
 export default function LoginForm({
   openLogin,
@@ -23,6 +24,7 @@ export default function LoginForm({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registerMode, setRegisterMode] = useState(false);
+  const [logo, setLogo] = useState<File | Blob | null>(null);
 
   const [message, setMessage] = useState<{
     color: string;
@@ -35,6 +37,7 @@ export default function LoginForm({
       close: () => setOpenLogin(false),
       registerMode,
       email,
+      logo,
       password,
       businessName,
       address,
@@ -81,6 +84,15 @@ export default function LoginForm({
                 />
                 <label htmlFor="address">Address</label>
               </FloatLabel>
+              <FileUpload
+                name="logo"
+                mode="basic"
+                auto
+                className="w-full"
+                accept="image/png"
+                maxFileSize={1000000}
+                onSelect={(e) => setLogo(e.files[0])}
+              />
               <Divider />
             </>
           )}

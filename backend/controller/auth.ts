@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { uploadImageToCloudinary } from "./service";
 
 export const login = async (email: string, password: string) => {
   try {
@@ -21,11 +22,51 @@ export const login = async (email: string, password: string) => {
   }
 };
 
+export const updateProfile = async (
+  businessName?: string,
+  address?: string,
+  logo?: File | Blob | null
+) => {
+  try {
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error("User not logged in");
+    }
+
+    const userDocRef = doc(db, "users", user.uid);
+    const updateData: { [key: string]: any } = {};
+
+    if (businessName !== undefined) {
+      updateData.businessName = businessName;
+    }
+    if (address !== undefined) {
+      updateData.address = address;
+    }
+    if (logo) {
+      const logoUrl = await uploadImageToCloudinary(logo);
+      updateData.logoUrl = logoUrl;
+    }
+
+    if (Object.keys(updateData).length > 0) {
+      await setDoc(userDocRef, updateData, { merge: true });
+    }
+
+    return await getCurrentUser(); // Return updated user data
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error(String(error));
+  }
+};
+
+
 export const register = async (
   email: string,
   password: string,
   businessName: string,
-  address: string
+  address: string,
+  logo: File | Blob
 ) => {
   try {
     const { user } = await createUserWithEmailAndPassword(
@@ -33,8 +74,10 @@ export const register = async (
       email,
       password
     );
+
+    const logoUrl = await uploadImageToCloudinary(logo);
     const userDocRef = doc(db, "users", user.uid);
-    await setDoc(userDocRef, { businessName, address }, { merge: true });
+    await setDoc(userDocRef, { businessName, address, logoUrl }, { merge: true });
     return user;
   } catch (error) {
     if (error instanceof Error) {
@@ -55,6 +98,7 @@ export const getCurrentUser = async () => {
           ...user,
           businessName: userDocSnap.data().businessName,
           address: userDocSnap.data().address,
+          logoUrl: userDocSnap.data().logoUrl,
         };
       } else {
         throw new Error("User not found");

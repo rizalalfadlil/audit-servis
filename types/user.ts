@@ -3,4 +3,5 @@ export interface UserProps {
   businessName: string;
   email: string | null;
   address: string;
+  logoUrl: string;
 }

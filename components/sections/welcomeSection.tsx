@@ -22,6 +22,7 @@ const WelcomeSection = () => {
             businessName: res.businessName,
             address: res.address,
             email: res.email,
+            logoUrl: res.logoUrl,
           });
           
         } catch (e) {
