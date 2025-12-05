@@ -143,7 +143,7 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 
 1. Fork repository
 2. Buat branch fitur (`git checkout -b fitur/namafitur`)
-3. Commit perubahan (`git commit -m 'Menambahkan fitur baru'`)
+3. Commit perubahan (`git commit -m 'Menambahkan fitur baru'')
 4. Push ke branch (`git push origin fitur/namafitur`)
 5. Buat Pull Request
 

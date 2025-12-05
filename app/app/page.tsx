@@ -77,7 +77,7 @@ export default function Page() {
   };
 
   return (
-    <Crop>
+    <div>
       <Stepper ref={stepperRef}>
         <StepperPanel header="Form">
           <FormStep
@@ -104,6 +104,6 @@ export default function Page() {
           />
         </StepperPanel>
       </Stepper>
-    </Crop>
+    </div>
   );
 }

@@ -88,7 +88,7 @@ export default function History() {
   };
 
   return isLoggedIn ? (
-    <Crop className="space-y-8">
+    <div className="space-y-8">
       <p className="p-4 font-bold text-lg">Riwayat Servis</p>
       <DataTable
         emptyMessage="tidak ada data"
@@ -133,7 +133,7 @@ export default function History() {
         disabled={loading}
         onClick={confirmDelete}
       />
-    </Crop>
+    </div>
   ) : (
     <ErrorPage code="401" />
   );

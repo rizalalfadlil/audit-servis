@@ -109,7 +109,7 @@ export default function Page() {
     }
   };
   return isLoggedIn ? (
-    <Crop className="grid gap-8 w-full">
+    <div className="grid gap-8 w-full">
       {message.text && <Message text={message.text} severity={message.type} />}
       <p className="text-lg font-bold">Perbarui Profil</p>
       <FloatLabel>
@@ -158,7 +158,7 @@ export default function Page() {
         disabled={loading}
         loading={loading}
       />
-    </Crop>
+    </div>
   ) : (
     <ErrorPage code="401" />
   );
