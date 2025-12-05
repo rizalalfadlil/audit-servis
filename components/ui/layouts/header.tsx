@@ -2,7 +2,6 @@
 import { Button } from "primereact/button";
 import { Toolbar } from "primereact/toolbar";
 import { useEffect, useState } from "react";
-import { IoHome } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import LoginForm from "../forms/loginForm";
 import { getCurrentUser, logOut } from "@/backend/controller/auth";
@@ -50,14 +49,16 @@ export default function Header() {
   return (
     <>
       <Toolbar
-        start={<>
-        <IoHome
-            size={24}
-            onClick={() => {
-              router.push("/");
-            }}
-          />
-        </>
+        start={
+          <>
+            <p
+              className="text-lg font-bold"
+              style={{ cursor: "pointer", color: "var(--primary-color)" }}
+              onClick={() => router.push("/app")}
+            >
+              Audit Servis
+            </p>
+          </>
         }
         className="fixed w-full top-0 z-50"
         end={

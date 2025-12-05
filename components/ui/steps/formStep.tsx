@@ -49,7 +49,7 @@ const FormStep = ({
                 onChange={(e) => setCustomerContact(e.target.value)}
               />
               <label htmlFor="contact">
-                Kontak Pelanggan (email atau nomor telepon)
+                kontak
               </label>
             </FloatLabel>
             <p className="text-xl font-bold">Informasi Perangkat</p>

@@ -15,7 +15,12 @@ export const toBlob = async (input: File | Blob | string): Promise<Blob> => {
   }
   return new Blob();
 };
-
+export const toCm = (pixels: number): number => {
+  // Standard print resolution is 96 DPI
+  // 1 inch = 2.54 cm
+  // 96 pixels = 2.54 cm
+  return ((pixels * 2.54) / 96);
+};
 export const translateFirebaseMessage = (message: string): string => {
   const messageMap: Record<string, string> = {
     ["auth/email-already-in-use"]: "Email sudah terdaftar",

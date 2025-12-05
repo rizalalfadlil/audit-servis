@@ -73,7 +73,7 @@ export default function DiagnosisStep({
         <p className="text-xs text-gray-500">{complaint || "Keluhan"}</p>
       </div>
       <p className="text-lg font-bold">Tambah Kerusakan dan Perbaikan</p>
-      <ActionProblemForm addProblem={addProblem} addAction={addAction} />
+      <ActionProblemForm problems={problems} actions={actions} addProblem={addProblem} addAction={addAction} />
       <div className="grid lg:grid-cols-2 gap-8">
         <ProblemLayout problems={problems} removeProblem={removeProblem} />
         <ActionLayout actions={actions} removeAction={removeAction} />

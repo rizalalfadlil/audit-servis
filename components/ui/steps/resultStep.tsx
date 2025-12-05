@@ -62,7 +62,7 @@ export default function ResultStep({
           diagnosis ini atau mengunduhnya untuk dibagikan ke pelanggan.
         </p>
       </div>
-      <div className="overflow-x-auto bg-gray-50 p-4 my-8">
+      <div className="overflow-auto bg-gray-200 p-4 my-8 max-h-[50vh]">
         <ResultFile
           diagnosisResult={diagnosisResult}
           initialCheck={initialCheck}

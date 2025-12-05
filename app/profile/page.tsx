@@ -11,8 +11,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { firebase } from "@/backend/firebase";
 import { getCurrentUser, updateProfile } from "@/backend/controller/auth";
 import { Image } from "primereact/image";
-import ErrorPage from "@/components/ui/sections/errorPage";
-import Crop from "@/components/ui/layouts/crop";
+import ErrorPage from "@/components/ui/layouts/errorPage";
 
 export default function Page() {
   const [businessName, setBusinessName] = useState("");

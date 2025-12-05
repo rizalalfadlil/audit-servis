@@ -11,8 +11,16 @@ const WelcomeSection = () => {
   const [isLoggedIn] = useState(checkLogin());
 
   return (
-    <section className="h-dvh flex flex-col justify-center items-center">
-      <div className="flex flex-col gap-2 text-center justify-center items-center">
+    <section
+      style={{
+        backgroundColor: "var(--highlight-bg)",
+        color: "var(--highlight-text-color)",
+        borderRadius: "var(--border-radius)",
+        padding: "3rem",
+      }}
+      className="h-dvh flex flex-col justify-center items-center"
+    >
+      <div className="flex flex-col gap-2 text-center justify-center items-center text-start md:text-center">
         <p className="text-4xl font-bold">
           Laporkan Servis Sejelas Kristal. Tanpa Biaya Tersembunyi.
         </p>
@@ -20,7 +28,7 @@ const WelcomeSection = () => {
           Sistem Audit Digital pertama yang dirancang khusus untuk UMKM
           perbaikan, memutus keraguan pelanggan.
         </p>
-        <div className="flex gap-2 mt-4">
+        <div className="grid md:grid-cols-2 w-full md:w-auto gap-4 mt-8">
           <LoginForm openLogin={openLogin} setOpenLogin={setOpenLogin} />
           <Button
             label="Coba Sekarang"
@@ -28,7 +36,11 @@ const WelcomeSection = () => {
               isLoggedIn ? router.push("/app") : setOpenLogin(true)
             }
           />
-          <Button label="Lihat Panduan" className="p-button-outlined" />
+          <Button
+            label="Lihat Panduan"
+            onClick={() => router.push("/docs")}
+            className="p-button-outlined"
+          />
         </div>
       </div>
     </section>

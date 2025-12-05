@@ -29,7 +29,6 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 - Tampilan responsif dengan Tailwind CSS
 - Navigasi berbasis langkah (stepper)
 - Preview laporan interaktif
-- Notifikasi sistem
 
 ## 🛠️ Teknologi yang Digunakan
 
@@ -54,16 +53,20 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 
 ```
 .
-├── app/                     # Halaman aplikasi (App Router)
-│   ├── app/                 # Halaman utama
-│   ├── history/             # Riwayat layanan
-│   └── profile/             # Manajemen profil
+├── app/                    # Halaman aplikasi (App Router)
+│   ├── app/                # Halaman utama
+│   ├── history/            # Riwayat layanan
+│   └── profile/            # Manajemen profil
 ├── backend/                # Logika server
 │   ├── controller/         # Controller untuk API
 │   ├── firebase.ts         # Konfigurasi Firebase
 │   └── cloudinary.ts       # Konfigurasi Cloudinary
-├── components/             # Komponen UI
-│   ├── sections/           # Komponen halaman
+├── components/             # Komponen frontend
+│   ├── ui/                 # Komponen halaman
+│   |   ├── forms/          # Komponen form
+│   |   ├── layouts/        # Komponen tata letak
+│   |   ├── sections/       # Komponen bagian
+│   |   └── steps/          # Komponen langkah
 │   └── logic/              # Logika bisnis
 ├── public/                 # Aset statis
 ├── types/                  # Tipe TypeScript
@@ -120,32 +123,7 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 
 ## 📚 Panduan Penggunaan
 
-### 1. Pendaftaran & Login
-
-- Buka halaman register untuk membuat akun baru
-- Login menggunakan email dan password
-
-### 2. Membuat Layanan Baru
-
-1. Klik tombol "Buat Layanan Baru"
-2. Isi formulir data pelanggan dan perangkat
-3. Tambahkan detail kerusakan dan tindakan yang diperlukan
-4. Upload gambar pendukung
-5. Simpan atau ekspor laporan
-
-### 3. Melihat Riwayat
-
-- Akses menu "Riwayat" untuk melihat semua layanan
-- Filter berdasarkan status atau tanggal
-- Klik pada item untuk melihat detail lengkap
-
-## 🤝 Berkontribusi
-
-1. Fork repository
-2. Buat branch fitur (`git checkout -b fitur/namafitur`)
-3. Commit perubahan (`git commit -m 'Menambahkan fitur baru'')
-4. Push ke branch (`git push origin fitur/namafitur`)
-5. Buat Pull Request
+panduan lengkap penggunaan bisa dilihat di [panduan pengguna](/PANDUAN_PENGGUNA.md)
 
 ## 📄 Lisensi
 

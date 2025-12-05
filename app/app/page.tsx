@@ -13,7 +13,6 @@ import {
   Problem,
 } from "@/types/service";
 import { SetCheckIn } from "@/types/service-react";
-import Crop from "@/components/ui/layouts/crop";
 
 export default function Page() {
   const stepperRef = useRef<Stepper>(null);
@@ -79,7 +78,7 @@ export default function Page() {
   return (
     <div>
       <Stepper ref={stepperRef}>
-        <StepperPanel header="Form">
+        <StepperPanel header="Formulir">
           <FormStep
             getCheckIn={getCheckIn}
             setCheckIn={setCheckIn}
@@ -96,7 +95,7 @@ export default function Page() {
             navigate={navigate}
           />
         </StepperPanel>
-        <StepperPanel header="Result">
+        <StepperPanel header="Hasil">
           <ResultStep
             diagnosisResult={getDiagnosisResult}
             initialCheck={getCheckIn}

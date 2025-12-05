@@ -11,9 +11,13 @@ import { useState } from "react";
 export default function ActionProblemForm({
   addProblem,
   addAction,
+  problems,
+  actions,
 }: {
   addProblem: (problem: Problem) => void;
   addAction: (action: Action) => void;
+  problems: Problem[];
+  actions: Action[];
 }) {
   const [problemName, setProblemName] = useState("");
   const [problemLevel, setProblemLevel] = useState<Problem["level"]>("rendah");
@@ -70,8 +74,9 @@ export default function ActionProblemForm({
           <Button
             label="tambahkan"
             className="grow"
-            disabled={!problemName}
+            disabled={!problemName || problems.length > 10}
             onClick={updateProblem}
+
           />
         </div>
       </TabPanel>
@@ -108,8 +113,9 @@ export default function ActionProblemForm({
           </FloatLabel>
           <Button
             label="tambahkan"
-            disabled={!actionName || !actionType}
+            disabled={!actionName || !actionType || actions.length > 10}
             onClick={updateAction}
+            
           />
         </div>
       </TabPanel>

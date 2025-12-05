@@ -12,8 +12,7 @@ import { Button } from "primereact/button";
 import { Messages } from "primereact/messages";
 import { clearHistory } from "@/backend/controller/service";
 import { confirmDialog, ConfirmDialog } from "primereact/confirmdialog";
-import ErrorPage from "@/components/ui/sections/errorPage";
-import Crop from "@/components/ui/layouts/crop";
+import ErrorPage from "@/components/ui/layouts/errorPage";
 
 export default function History() {
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
@@ -110,7 +109,7 @@ export default function History() {
         footer={null}
         onHide={() => setSelectedHistory(null)}
       >
-        <div className="overflow-x-auto bg-gray-200 p-4 my-8">
+        <div className="overflow-auto bg-gray-200 max-h-[50vh] p-4 my-8">
           {selectedHistory && (
             <ResultFile
               diagnosisResult={selectedHistory.diagnosisResult}
