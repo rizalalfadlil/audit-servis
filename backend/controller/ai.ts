@@ -54,7 +54,7 @@ export const getAiSuggestions = async ({
   });
 
   const response = await GetResponse(promptStructure.prompt);
-  console.log(response);
+  
   return response;
 };
 

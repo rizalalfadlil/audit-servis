@@ -29,7 +29,8 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts",
-    "app/docs/layout.tsx"
+    "app/docs/layout.tsx",
+    "backend/__tests__/ai.test.ts"
   ],
   "exclude": ["node_modules"]
 }
