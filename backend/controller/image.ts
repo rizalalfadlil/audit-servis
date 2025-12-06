@@ -1,5 +1,5 @@
 import { toBlob } from "@/utils/transform";
-import { getCloudinaryConfig } from "../cloudinary";
+import { getCloudinaryConfig } from "../config/cloudinary";
 
 export async function uploadImageToCloudinary(
   file: File | Blob | string

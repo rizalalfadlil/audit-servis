@@ -22,7 +22,7 @@ export default function AboutSection() {
     }
   ];
   return (
-    <section className="min-h-dvh p-4 md:p-8 pt-[20vh] md:pt-[20vh] max-w-7xl mx-auto space-y-8 flex flex-col">
+    <section className="min-h-dvh p-4 md:p-8 pt-[28vh] md:pt-[28vh] max-w-7xl mx-auto space-y-8 flex flex-col">
       <p className="text-2xl font-bold">Tentang Audit Servis</p>
       <p>
         Audit Servis adalah jembatan digital yang menghubungkan profesionalisme

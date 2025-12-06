@@ -13,6 +13,7 @@ import {
   Problem,
 } from "@/types/service";
 import { SetCheckIn } from "@/types/service-react";
+import { useSuggestions } from "@/components/ui/layouts/suggestionsLayout";
 
 export default function Page() {
   const stepperRef = useRef<Stepper>(null);
@@ -49,9 +50,11 @@ export default function Page() {
   const setDiagnosisResult = {
     addProblem: (problem: Problem) => {
       setProblems((prev) => [...prev, problem]);
+      callSuggestions(problem);
     },
     addAction: (action: Action) => {
       setActions((prev) => [...prev, action]);
+      callSuggestions(action);
     },
     addImage: (image: File) => {
       setImages((prev) => [...prev, image]);
@@ -70,11 +73,18 @@ export default function Page() {
     },
   };
 
+  const { showSuggestions } = useSuggestions();
+
   const navigate = {
     next: () => stepperRef.current?.nextCallback(),
     prev: () => stepperRef.current?.prevCallback(),
   };
 
+  const callSuggestions = (changes: Problem | Action | string) => {
+    if(deviceName){
+      showSuggestions({initialCheck: getCheckIn, diagnosisResult: getDiagnosisResult}, changes);
+    }
+  };
   return (
     <div>
       <Stepper ref={stepperRef}>
@@ -82,7 +92,7 @@ export default function Page() {
           <FormStep
             getCheckIn={getCheckIn}
             setCheckIn={setCheckIn}
-            next={navigate.next}
+            next={()=>{navigate.next(); callSuggestions(complaint);}}
           />
         </StepperPanel>
         <StepperPanel header="Diagnosis">

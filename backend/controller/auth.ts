@@ -1,5 +1,5 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { firebase } from "../firebase";
+import { firebase } from "../config/firebase";
 
 const { auth, db } = firebase;
 

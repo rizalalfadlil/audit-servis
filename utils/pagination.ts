@@ -1,4 +1,3 @@
-// utils/pagination.ts
 export interface PaginationResult<T> {
   currentPageData: T[];
   remainingItems: number;

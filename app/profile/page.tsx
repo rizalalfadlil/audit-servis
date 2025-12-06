@@ -8,7 +8,7 @@ import { Button } from "primereact/button";
 import { Message } from "primereact/message";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { firebase } from "@/backend/firebase";
+import { firebase } from "@/backend/config/firebase";
 import { getCurrentUser, updateProfile } from "@/backend/controller/auth";
 import { Image } from "primereact/image";
 import ErrorPage from "@/components/ui/layouts/errorPage";

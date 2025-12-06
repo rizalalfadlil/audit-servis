@@ -20,6 +20,13 @@ export default function Footer() {
             className="font-bold hover:underline"
           >
             RizalAlfadlil
+          </Link>{" "}
+          dan{" "}
+          <Link
+            href="https://github.com/MaseruKun"
+            className="font-bold hover:underline"
+          >
+            MaseruKun
           </Link>
         </div>
         <div className="text-sm flex gap-4">

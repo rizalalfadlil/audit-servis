@@ -1,6 +1,8 @@
 export const toURL = (file: File | string) => {
+  if (!file) return "";
   if (typeof file === "string") return file;
   if (file instanceof Blob) return URL.createObjectURL(file);
+  console.warn("Unsupported file type:", file);
   return "";
 };
 
@@ -15,12 +17,7 @@ export const toBlob = async (input: File | Blob | string): Promise<Blob> => {
   }
   return new Blob();
 };
-export const toCm = (pixels: number): number => {
-  // Standard print resolution is 96 DPI
-  // 1 inch = 2.54 cm
-  // 96 pixels = 2.54 cm
-  return ((pixels * 2.54) / 96);
-};
+
 export const translateFirebaseMessage = (message: string): string => {
   const messageMap: Record<string, string> = {
     ["auth/email-already-in-use"]: "Email sudah terdaftar",

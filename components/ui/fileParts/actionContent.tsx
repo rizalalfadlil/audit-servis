@@ -1,6 +1,4 @@
 import { formatCurrency } from "@/utils/transform";
-import { Column } from "primereact/column";
-import { DataTable } from "primereact/datatable";
 
 export const ActionContent = ({
   actions,
@@ -16,15 +14,24 @@ export const ActionContent = ({
           memperbaiki masalah di atas
         </p>
       </div>
-      <DataTable emptyMessage="tidak ada data" value={actions}>
-        <Column field="name" header="nama" />
-        <Column field="type" header="jenis" />
-        <Column
-          field="cost"
-          header="biaya"
-          body={(data) => formatCurrency(data.cost)}
-        />
-      </DataTable>
+      <table className="border *:border **:border **:p-1">
+        <thead>
+          <tr className="font-bold">
+            <th>Nama</th>
+            <th>Jenis</th>
+            <th>Biaya</th>
+          </tr>
+        </thead>
+        <tbody>
+          {actions.map((action) => (
+            <tr key={action.name}>
+              <td>{action.name}</td>
+              <td>{action.type}</td>
+              <td>{formatCurrency(action.cost)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 };

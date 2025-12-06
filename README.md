@@ -2,7 +2,7 @@
 
 Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahkan dalam menangani laporan servis perangkat pelanggan. Aplikasi ini menyediakan alur kerja lengkap mulai dari pendaftaran pelanggan, diagnosis kerusakan, hingga pembuatan laporan servis.
 
-## 🌟 Fitur Utama
+## Fitur Utama
 
 ### 1. Manajemen Pelanggan
 
@@ -30,7 +30,7 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 - Navigasi berbasis langkah (stepper)
 - Preview laporan interaktif
 
-## 🛠️ Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 ### Frontend
 
@@ -49,31 +49,32 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 - **File Storage**: Cloudinary
 - **Deployment**: Vercel/Netlify (compatible)
 
-## 🏗️ Struktur Proyek
+## Struktur Proyek
 
 ```
 .
 ├── app/                    # Halaman aplikasi (App Router)
 │   ├── app/                # Halaman utama
 │   ├── history/            # Riwayat layanan
+│   ├── docs/               # Panduan Pengguna
 │   └── profile/            # Manajemen profil
 ├── backend/                # Logika server
 │   ├── controller/         # Controller untuk API
-│   ├── firebase.ts         # Konfigurasi Firebase
-│   └── cloudinary.ts       # Konfigurasi Cloudinary
+│   └── config/             # Konfigurasi API pihak ketiga
 ├── components/             # Komponen frontend
-│   ├── ui/                 # Komponen halaman
-│   |   ├── forms/          # Komponen form
-│   |   ├── layouts/        # Komponen tata letak
-│   |   ├── sections/       # Komponen bagian
+│   ├── ui/                 # UI
+│   |   ├── forms/          # Komponen formulir
+│   |   ├── layouts/        # Kumpulan komponen kecil
+│   |   ├── fileParts/      # Bagian file hasil
+│   |   ├── sections/       # Komponen bagian landing page
 │   |   └── steps/          # Komponen langkah
 │   └── logic/              # Logika bisnis
 ├── public/                 # Aset statis
-├── types/                  # Tipe TypeScript
-└── utils/                  # Utility functions
+├── types/                  # Tipe Data TypeScript
+└── utils/                  # Reusable functions
 ```
 
-## 🚀 Panduan Instalasi
+## Panduan Instalasi
 
 ### Prasyarat
 
@@ -87,7 +88,7 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 1. **Clone Repository**
 
    ```bash
-   git clone https://github.com/username/hackathon-umkm-servis.git
+   git clone https://github.com/rizalalfadlil/hackathon-umkm-servis.git
    cd hackathon-umkm-servis
    ```
 
@@ -102,17 +103,20 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 
    ```env
    # Firebase Configuration
-   NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
-   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+   FIREBASE_API_KEY=your_api_key
+   FIREBASE_AUTH_DOMAIN=your_auth_domain
+   FIREBASE_PROJECT_ID=your_project_id
+   FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   FIREBASE_APP_ID=your_app_id
 
    # Cloudinary Configuration
-   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
-   NEXT_PUBLIC_CLOUDINARY_API_KEY=your_api_key
+   CLOUDINARY_CLOUD_NAME=your_cloud_name
+   CLOUDINARY_API_KEY=your_api_key
    CLOUDINARY_API_SECRET=your_api_secret
+
+   # Kolosal AI Configuration
+   KOLOSAL_API_KEY=your_api_key
    ```
 
 4. **Jalankan Aplikasi**
@@ -121,17 +125,18 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
    ```
    Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
-## 📚 Panduan Penggunaan
+## Panduan Penggunaan
 
-panduan lengkap penggunaan bisa dilihat di [panduan pengguna](/PANDUAN_PENGGUNA.md)
+panduan lengkap penggunaan bisa dilihat di [panduan pengguna](/USER_GUIDE.md)
 
-## 📄 Lisensi
+## Lisensi
 
 Proyek ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) untuk detailnya.
 
-## ✨ Kontributor
+## Kontributor
 
-- [Nama Anda](https://github.com/username)
+- [RizalAlfadlil](https://github.com/rizalalfadlil)
+- [MaseruKun](https://github.com/maserukun)
 
 ---
 

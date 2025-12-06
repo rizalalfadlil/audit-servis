@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import LoginForm from "../forms/loginForm";
 import { getCurrentUser, logOut } from "@/backend/controller/auth";
 import { onAuthStateChanged } from "firebase/auth";
-import { firebase } from "@/backend/firebase";
+import { firebase } from "@/backend/config/firebase";
 import { UserProps } from "@/types/user";
 
 export default function Header() {
@@ -25,7 +25,6 @@ export default function Header() {
             email: res.email,
             logoUrl: res.logoUrl,
           });
-          
         } catch (e) {
           console.error(e);
           setUser(null);
@@ -36,6 +35,40 @@ export default function Header() {
     });
     return () => unsub();
   }, []);
+
+  function profileButton(user: UserProps) {
+    return (
+      <>
+        <div className="hidden sm:block">
+          <Button
+            tooltip="Perbarui profil"
+            tooltipOptions={{
+              position: "bottom",
+            }}
+            outlined
+            label={user.businessName}
+            icon="pi pi-user"
+            text
+            severity="secondary"
+            onClick={() => router.push("/profile")}
+          />
+        </div>
+        <div className="block sm:hidden">
+          <Button
+            tooltip="Perbarui profil"
+            tooltipOptions={{
+              position: "bottom",
+            }}
+            outlined  
+            icon="pi pi-user"
+            text
+            severity="secondary"
+            onClick={() => router.push("/profile")}
+          />
+        </div>
+      </>
+    );
+  }
 
   const onSignOut = async () => {
     try {
@@ -76,18 +109,7 @@ export default function Header() {
                   text
                   size="small"
                 />
-                <Button
-                  tooltip="Perbarui profil"
-                  tooltipOptions={{
-                    position: "bottom",
-                  }}
-                  outlined
-                  label={user.businessName}
-                  icon="pi pi-user"
-                  text
-                  severity="secondary"
-                  onClick={() => router.push("/profile")}
-                />
+                {profileButton(user)}
                 <Button
                   tooltip="Keluar"
                   tooltipOptions={{

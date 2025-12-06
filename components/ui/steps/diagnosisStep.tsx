@@ -73,7 +73,12 @@ export default function DiagnosisStep({
         <p className="text-xs text-gray-500">{complaint || "Keluhan"}</p>
       </div>
       <p className="text-lg font-bold">Tambah Kerusakan dan Perbaikan</p>
-      <ActionProblemForm problems={problems} actions={actions} addProblem={addProblem} addAction={addAction} />
+      <ActionProblemForm
+        problems={problems}
+        actions={actions}
+        addProblem={addProblem}
+        addAction={addAction}
+      />
       <div className="grid lg:grid-cols-2 gap-8">
         <ProblemLayout problems={problems} removeProblem={removeProblem} />
         <ActionLayout actions={actions} removeAction={removeAction} />
@@ -93,6 +98,14 @@ export default function DiagnosisStep({
         suggestions={suggestions}
         completeMethod={search}
       />
+      <div className="block sm:hidden">
+        <p className="text-xs text-gray-500">Total Biaya</p>
+        <p>
+          {formatCurrency(
+            actions.reduce((total, action) => total + action.cost, 0)
+          )}
+        </p>
+      </div>
       <Toolbar
         start={
           <Button
@@ -104,7 +117,7 @@ export default function DiagnosisStep({
         }
         end={
           <div className="gap-8 flex items-center">
-            <div>
+            <div className="hidden sm:block">
               <p className="text-xs text-gray-500">Total Biaya</p>
               <p>
                 {formatCurrency(
@@ -112,7 +125,11 @@ export default function DiagnosisStep({
                 )}
               </p>
             </div>
-            <Button label="Selesai" onClick={navigate.next} icon="pi pi-check" />
+            <Button
+              label="Selesai"
+              onClick={navigate.next}
+              icon="pi pi-check"
+            />
           </div>
         }
       />

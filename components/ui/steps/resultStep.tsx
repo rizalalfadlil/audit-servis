@@ -1,8 +1,9 @@
+"use client";
 import { Button } from "primereact/button";
 import { Toolbar } from "primereact/toolbar";
 import { DiagnosisResult, InitialCheck, ServiceReport } from "@/types/service";
 import { usePDF } from "react-to-pdf";
-import ResultFile from "../layouts/resultFile";
+import ResultFile from "../fileParts/resultFile";
 import { createServiceReport } from "@/backend/controller/service";
 import { useRef, useState } from "react";
 import { Messages } from "primereact/messages";
@@ -19,7 +20,9 @@ export default function ResultStep({
   prev: () => void;
 }) {
   const [loading, setLoading] = useState(false);
-  const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+  const { toPDF, targetRef } = usePDF({
+    filename: "page.pdf",
+  });
   const serviceReport: ServiceReport = { diagnosisResult, initialCheck };
   const msgs = useRef<MessagesType>(null);
   const [isLoggedIn] = useState(checkLogin());

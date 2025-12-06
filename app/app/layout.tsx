@@ -1,7 +1,9 @@
+"use client";
 import Header from "@/components/ui/layouts/header";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "primeicons/primeicons.css";
 import Footer from "@/components/ui/layouts/footer";
+import { SuggestionsProvider } from "@/components/ui/layouts/suggestionsLayout";
 
 export default function RootLayout({
   children,
@@ -12,7 +14,7 @@ export default function RootLayout({
     <>
       <Header />
       <main className={`mt-[20vh] p-4 lg:p-8 max-w-7xl mx-auto`}>
-        {children}
+        <SuggestionsProvider>{children}</SuggestionsProvider>
       </main>
       <Footer />
     </>

@@ -22,7 +22,7 @@ const WelcomeSection = () => {
     >
       <div className="flex flex-col gap-2 text-center justify-center items-center text-start md:text-center">
         <p className="text-4xl font-bold">
-          Laporkan Servis Sejelas Kristal. Tanpa Biaya Tersembunyi.
+          Laporkan Servis Sejelas Kristal. Tanpa Ada Detail Terlewatkan.
         </p>
         <p className="text-lg">
           Sistem Audit Digital pertama yang dirancang khusus untuk UMKM

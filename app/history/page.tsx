@@ -4,9 +4,9 @@ import { ServiceReport } from "@/types/service";
 import { getHistory } from "@/backend/controller/service";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { firebase } from "@/backend/firebase";
+import { firebase } from "@/backend/config/firebase";
 import { Dialog } from "primereact/dialog";
-import ResultFile from "@/components/ui/layouts/resultFile";
+import ResultFile from "@/components/ui/fileParts/resultFile";
 import { usePDF } from "react-to-pdf";
 import { Button } from "primereact/button";
 import { Messages } from "primereact/messages";
@@ -97,9 +97,9 @@ export default function History() {
         selection={selectedHistory}
         onSelectionChange={(e) => setSelectedHistory(e.value as ServiceReport)}
       >
-        <Column field="initialCheck.customerName" header="Customer Name" />
+        <Column field="initialCheck.customerName" header="Nama Pelanggan" />
         <Column field="initialCheck.deviceName" header="Nama Perangkat" />
-        <Column field="initialCheck.complaint" header="Complaint" />
+        <Column field="initialCheck.complaint" header="Keluhan" />
       </DataTable>
       <Dialog
         header="Service Report"

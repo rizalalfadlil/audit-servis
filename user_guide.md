@@ -6,7 +6,7 @@ Selamat datang di Audit Servis. Panduan ini akan membantu Anda memahami dan meng
 
 1.  [Tentang Aplikasi](#tentang-aplikasi)
 2.  [Memulai](#memulai)
-3.  [Fitur Utama: Pencatatan Servis](#fitur-utama-pencatatan-servis)
+3.  [Pencatatan Servis](#fitur-utama-pencatatan-servis)
     - [Langkah 1: Informasi Pelanggan dan Keluhan](#langkah-1-informasi-pelanggan-dan-keluhan)
     - [Langkah 2: Diagnosis Kerusakan dan Rencana Perbaikan](#langkah-2-diagnosis-kerusakan-dan-rencana-perbaikan)
     - [Langkah 3: Tinjau dan Simpan Laporan](#langkah-3-tinjau-dan-simpan-laporan)
@@ -18,7 +18,7 @@ Selamat datang di Audit Servis. Panduan ini akan membantu Anda memahami dan meng
 ---
 
 ## Tentang Aplikasi
-
+![hero](/screenshots/hero.png)
 Aplikasi ini dirancang untuk membantu para pelaku UMKM dalam mencatat setiap proses servis secara transparan, mulai dari penerimaan barang hingga selesai perbaikan. Dengan pencatatan yang detail, Anda dapat meningkatkan kepercayaan pelanggan dan profesionalisme bisnis Anda.
 
 ## Memulai
@@ -29,7 +29,9 @@ Untuk memulai, ikuti langkah-langkah berikut:
 2.  Sebuah jendela _pop-up_ akan muncul. Anda dapat memilih untuk **Masuk (Login)** atau **Daftar (Register)** untuk mengakses fitur tambahan, atau melanjutkan tanpa akun.
 3.  Anda akan diarahkan ke halaman aplikasi utama untuk memulai proses pencatatan servis.
 
-## Fitur Utama: Pencatatan Servis
+![login](/screenshots/login.png)
+
+## Pencatatan Servis
 
 Proses pencatatan servis dibagi menjadi tiga langkah mudah:
 
@@ -40,6 +42,8 @@ Pada langkah ini, Anda akan diminta untuk memasukkan:
 - **Informasi Pelanggan:** Nama dan kontak (nomor telepon atau email).
 - **Informasi Perangkat:** Nama perangkat (misalnya, laptop, ponsel).
 - **Keluhan:** Deskripsi keluhan yang disampaikan oleh pelanggan.
+
+![form](/screenshots/step1.png)
 
 ### Langkah 2: Diagnosis Kerusakan dan Rencana Perbaikan
 
@@ -54,12 +58,20 @@ Setelah memeriksa perangkat, catat temuan Anda secara detail:
 
 Setelah semua informasi terisi, klik tombol **Selesai**.
 
+![masalah](/screenshots/masalah.png)
+
+![perbaikan](/screenshots/perbaikan.png)
+
+![images](/screenshots/images.png)
+
 ### Langkah 3: Tinjau dan Simpan Laporan
 
 Di langkah terakhir, Anda dapat:
 
 - **Melihat Pratinjau:** Tinjau kembali seluruh informasi dalam format laporan yang siap dibagikan.
 - **Simpan dan Unduh:** Simpan laporan dalam format digital untuk diunduh. Laporan ini dapat Anda bagikan kepada pelanggan sebagai bukti servis yang transparan. Jika Anda masuk ke akun Anda, laporan ini juga akan tersimpan secara otomatis di riwayat servis Anda.
+
+![result](/screenshots/result.png)
 
 ## Fitur Tambahan
 
@@ -77,5 +89,15 @@ Anda dapat menambahkan kop surat (logo dan nama bisnis) pada laporan Anda. Infor
 ### Riwayat Servis
 
 Akses semua riwayat transaksi servis Anda di halaman **Riwayat**. Anda dapat melihat detail setiap servis dan mencetak ulang laporan jika diperlukan.
+
+### Saran AI
+
+
+Saran AI akan muncul ketika anda:
+- selesai menyelesaikan form tahap 1
+- menambahkan masalah baru ke list masalah
+- menambahkan rencana perbaikan barang/jasa
+
+![ai](/screenshots/ai.png)
 
 Terima kasih telah menggunakan Audit Servis!

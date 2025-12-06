@@ -16,19 +16,21 @@ export default function ImageUploads({
 }: Props) {
   return (
     <>
-      <FileUpload
-        mode="basic"
-        auto
-        accept="image/*"
-        maxFileSize={1000000}
-        onSelect={(e) => {
-          const files = (e.files as File[]) || [];
-          if (!files.length) return;
-          const first = files[0];
-          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-          if (first instanceof Blob) onFilesChange && onFilesChange(first);
-        }}
-      />
+      {Array.isArray(images) && images?.length < 3 && (
+        <FileUpload
+          mode="basic"
+          auto
+          accept="image/*"
+          maxFileSize={1000000}
+          onSelect={(e) => {
+            const files = (e.files as File[]) || [];
+            if (!files.length) return;
+            const first = files[0];
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+            if (first instanceof Blob) onFilesChange && onFilesChange(first);
+          }}
+        />
+      )}
       <div className="flex gap-4 *:rounded-lg overflow-y-auto">
         {images?.filter(Boolean).map((image, index) => (
           <Image
@@ -39,6 +41,10 @@ export default function ImageUploads({
             onClick={() => removeImage(index)}
           />
         ))}
+      </div>
+      <div>
+        <p className="text-sm">pilih hingga 3 gambar</p>
+        <p className="text-sm">klik di salah satu gambar untuk menghapus</p>
       </div>
     </>
   );

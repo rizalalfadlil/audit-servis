@@ -1,6 +1,6 @@
 import { ServiceReport } from "@/types/service";
 import { addDoc, collection, deleteDoc, getDocs } from "firebase/firestore";
-import { firebase } from "../firebase";
+import { firebase } from "../config/firebase";
 import { uploadImageToCloudinary } from "./image";
 
 export const createServiceReport = async (serviceReport: ServiceReport) => {
@@ -18,8 +18,6 @@ export const createServiceReport = async (serviceReport: ServiceReport) => {
   );
   return res;
 };
-
-
 
 export const getHistory = async () => {
   const user = firebase.auth.currentUser;

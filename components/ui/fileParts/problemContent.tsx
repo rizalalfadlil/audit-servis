@@ -1,5 +1,3 @@
-import { Column } from "primereact/column";
-import { DataTable } from "primereact/datatable";
 
 export const ProblemContent = ({
   problems,
@@ -15,10 +13,22 @@ export const ProblemContent = ({
             berikut ini adalah masalah yang kami temukan selama pemeriksaan
           </p>
         </div>
-        <DataTable emptyMessage="tidak ada data" value={problems}>
-          <Column field="name" header="nama" />
-          <Column field="level" header="kerusakan" />
-        </DataTable>
+        <table className="border *:border **:border **:p-1">
+          <thead>
+            <tr className="font-bold">
+              <th>Nama</th>
+              <th>Kerusakan</th>
+            </tr>
+          </thead>
+          <tbody>
+            {problems.map((problem, index) => (
+              <tr key={index}>
+                <td>{problem.name}</td>
+                <td>{problem.level}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </>
     )
   );
