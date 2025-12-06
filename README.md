@@ -125,6 +125,25 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
    ```
    Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
+## Tampilan Aplikasi
+
+`/`
+![hero](/screenshots/hero.png)
+
+`/app`
+![step1](/screenshots/step1.png)
+![step2](/screenshots/step2.png)
+![step3](/screenshots/step3.png)
+
+`profile/`
+![profile](/screenshots/profile.png)
+
+`history/`
+![history](/screenshots/history.png)
+
+`docs/`
+![docs](/screenshots/docs.png)
+
 ## Panduan Penggunaan
 
 panduan lengkap penggunaan bisa dilihat di [panduan pengguna](/USER_GUIDE.md)
