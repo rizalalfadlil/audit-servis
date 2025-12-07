@@ -155,6 +155,22 @@ Proyek ini dibuat sebagai submisi Hackathon **IMPHNEN x KOLOSAL "Inovasi AI: Men
    npm install
    ```
 
+3. **Setup Layanan Pihak Ketiga**
+
+   - Setup Firebase
+      1. Buat proyek baru di [Firebase Console](https://console.firebase.google.com/u/0/).
+      2. Aktifkan layanan [`Firestore`](https://firebase.google.com/docs/firestore/quickstart) dan [`Auth`](https://firebase.google.com/docs/auth/web/start).
+
+
+   - Cloudinary
+      1. buat upload preset baru dengan mode [`unsigned`](https://cloudinary.com/documentation/client_side_uploading#code_explorer_upload_multiple_files_using_a_form_unsigned)
+      
+   - Kolosal AI
+      - masuk dan buat api key baru di [kolosal](https://app.kolosal.ai/api_keys)
+
+   - [dokumentasi Firebase](https://firebase.google.com/docs)
+   - [dokumentasi Cloudinary](https://cloudinary.com/documentation/client_side_uploading#code_explorer_upload_multiple_files_using_a_form_unsigned)
+   - [dokumentasi Kolosal AI](https://api.kolosal.ai/docs)
 3. **Setup Environment Variables**
    Buat file `.env` di root direktori dan isi dengan konfigurasi:
 
