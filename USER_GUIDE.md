@@ -92,7 +92,6 @@ Akses semua riwayat transaksi servis Anda di halaman **Riwayat**. Anda dapat mel
 
 ### Saran AI
 
-
 Saran AI akan muncul ketika anda:
 - selesai menyelesaikan form tahap 1
 - menambahkan masalah baru ke list masalah

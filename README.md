@@ -1,6 +1,6 @@
 # Audit Servis
 
-Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahkan dalam menangani laporan servis perangkat pelanggan. Aplikasi ini menyediakan alur kerja lengkap mulai dari pendaftaran pelanggan, diagnosis kerusakan, hingga pembuatan laporan servis.
+Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahkan dalam menangani laporan servis perangkat pelanggan. Aplikasi ini menyediakan alur kerja lengkap mulai dari pendaftaran pelanggan, diagnosis kerusakan, hingga pembuatan laporan servis.
 
 ## Fitur Utama
 
@@ -8,7 +8,7 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 
 - Pendaftaran dan autentikasi pengguna
 - Penyimpanan data pelanggan
-- Riwayat layanan perangkat
+- Riwayat servis perangkat
 
 ### 2. Diagnosis Kerusakan
 
@@ -17,18 +17,26 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 - Rekomendasi perbaikan
 - Upload gambar pendukung
 
-### 3. Manajemen Layanan
+### 3. Manajemen Servis
 
 - Pelacakan status perbaikan
 - Perhitungan biaya otomatis
 - Ekspor laporan ke PDF
-- Riwayat layanan yang terorganisir
+- Riwayat servis
 
 ### 4. Antarmuka Pengguna
 
 - Tampilan responsif dengan Tailwind CSS
 - Navigasi berbasis langkah (stepper)
 - Preview laporan interaktif
+
+### 5. Saran AI (Oleh Kolosal AI)
+
+- Saran AI muncul ketika setelah menulis keluhan, setiap menambahkan ke list kerusakan dan tindakan 
+
+### 6. Panduan Pengguna
+
+- Halaman panduan pengguna tersendiri dalam `/docs`
 
 ## Teknologi yang Digunakan
 
@@ -47,7 +55,8 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 - **Authentication**: Firebase Authentication
 - **Database**: Firestore
 - **File Storage**: Cloudinary
-- **Deployment**: Vercel/Netlify (compatible)
+- **AI**: Kolosal.ai
+- **Deployment**: Vercel
 
 ## Struktur Proyek
 
@@ -55,7 +64,7 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 .
 ├── app/                    # Halaman aplikasi (App Router)
 │   ├── app/                # Halaman utama
-│   ├── history/            # Riwayat layanan
+│   ├── history/            # Riwayat servis
 │   ├── docs/               # Panduan Pengguna
 │   └── profile/            # Manajemen profil
 ├── backend/                # Logika server
