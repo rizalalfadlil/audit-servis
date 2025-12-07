@@ -1,6 +1,37 @@
 # Audit Servis
 
-Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahkan dalam menangani laporan servis perangkat pelanggan. Aplikasi ini menyediakan alur kerja lengkap mulai dari pendaftaran pelanggan, diagnosis kerusakan, hingga pembuatan laporan servis.
+Audit Servis adalah Aplikasi Manajemen Servis yang dirancang untuk mengatasi masalah utama UMKM jasa perbaikan HP dan Laptop Krisis Kepercayaan Pelanggan. Aplikasi ini menyediakan alur kerja yang memaksa transparansi digital dari pendaftaran hingga pelaporan, sekaligus memberikan tools cerdas (Saran AI) untuk meningkatkan efisiensi internal.
+
+[**Demo Aplikasi**](https://audit-servis.vercel.app/)
+
+## Tujuan Proyek
+
+Proyek ini dibuat sebagai submisi Hackathon **IMPHNEN x KOLOSAL "Inovasi AI: Mendorong Usaha Lokal dengan AI Inklusif"** dengan fokus pada:
+
+- **Inovasi**: Mengubah proses servis konvensional menjadi Audit Digital 3-Tahap dengan integrasi Kolosal AI.
+
+- **Membantu Usaha Lokal**: Menyediakan alat profesional yang memungkinkan UMKM bersaing dengan standar transparansi service center besar.
+
+## Screenshot Aplikasi
+
+### `/`
+![hero](/public/screenshots/hero.png)
+
+### `/app`
+![step1](/public/screenshots/step1.png)
+![step2](/public/screenshots/step2.png)
+![step3](/public/screenshots/step3.png)
+
+### `profile/`
+![profile](/public/screenshots/profile.png)
+
+### `history/`
+![history](/public/screenshots/history.png)
+
+### `docs/`
+![docs](/public/screenshots/docs.png)
+
+[**Demo Video**](https://youtu.be/_i_EKiqDvFA)
 
 ## Fitur Utama
 
@@ -30,9 +61,9 @@ Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahka
 - Navigasi berbasis langkah (stepper)
 - Preview laporan interaktif
 
-### 5. Saran AI (Oleh Kolosal AI)
+### 5. Saran AI (dengan Kolosal AI)
 
-- Saran AI muncul ketika setelah menulis keluhan, setiap menambahkan ke list kerusakan dan tindakan 
+- Saran AI muncul ketika setelah menulis keluhan, setiap menambahkan ke list kerusakan dan tindakan
 
 ### 6. Panduan Pengguna
 
@@ -42,7 +73,7 @@ Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahka
 
 ### Frontend
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Bahasa**: TypeScript
 - **Styling**: Tailwind CSS
 - **UI Components**: PrimeReact
@@ -55,7 +86,7 @@ Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahka
 - **Authentication**: Firebase Authentication
 - **Database**: Firestore
 - **File Storage**: Cloudinary
-- **AI**: Kolosal.ai
+- **AI Integration**: OpenAI SDK (dengan Base URL: Kolosal.ai, Model: Qwen 3 30BA3B)
 - **Deployment**: Vercel
 
 ## Struktur Proyek
@@ -87,10 +118,11 @@ Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahka
 
 ### Prasyarat
 
-- Node.js (v18+)
-- npm (v9+)
+- Node.js
+- npm
 - Akun Firebase
 - Akun Cloudinary
+- Akun Kolosal AI
 
 ### Langkah-langkah
 
@@ -108,7 +140,7 @@ Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahka
    ```
 
 3. **Setup Environment Variables**
-   Buat file `.env.local` di root direktori dan isi dengan konfigurasi:
+   Buat file `.env` di root direktori dan isi dengan konfigurasi:
 
    ```env
    # Firebase Configuration
@@ -118,11 +150,11 @@ Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahka
    FIREBASE_STORAGE_BUCKET=your_storage_bucket
    FIREBASE_MESSAGING_SENDER_ID=your_sender_id
    FIREBASE_APP_ID=your_app_id
+   FIREBASE_MEASUREMENT_ID=your_measurement_id
 
    # Cloudinary Configuration
    CLOUDINARY_CLOUD_NAME=your_cloud_name
-   CLOUDINARY_API_KEY=your_api_key
-   CLOUDINARY_API_SECRET=your_api_secret
+   CLOUDINARY_UPLOAD_PRESET=your_upload_preset
 
    # Kolosal AI Configuration
    KOLOSAL_API_KEY=your_api_key
@@ -133,25 +165,6 @@ Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahka
    npm run dev
    ```
    Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
-
-## Tampilan Aplikasi
-
-`/`
-![hero](/public/screenshots/hero.png)
-
-`/app`
-![step1](/public/screenshots/step1.png)
-![step2](/public/screenshots/step2.png)
-![step3](/public/screenshots/step3.png)
-
-`profile/`
-![profile](/public/screenshots/profile.png)
-
-`history/`
-![history](/public/screenshots/history.png)
-
-`docs/`
-![docs](/public/screenshots/docs.png)
 
 ## Panduan Penggunaan
 
