@@ -44,12 +44,13 @@ export default function ResultStep({
           detail: "Hasil berhasil diunduh, login untuk menyimpan riwayat hasil",
         });
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
+      console.error("Error saving result:", error);
       msgs.current?.show({
         severity: "error",
         summary: "Error",
-        detail: "Gagal Menyimpan Hasil",
+        detail:
+          error instanceof Error ? error.message : "Gagal Menyimpan Hasil",
       });
     } finally {
       setLoading(false);

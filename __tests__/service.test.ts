@@ -6,7 +6,6 @@ import {
 import { ServiceReport, InitialCheck, DiagnosisResult } from "@/types/service";
 import { uploadImageToCloudinary } from "../backend/controller/image";
 
-// Mock Firebase dependencies
 jest.mock("../backend/config/firebase", () => ({
   firebase: {
     auth: {
@@ -25,7 +24,6 @@ jest.mock("firebase/firestore", () => ({
 
 jest.mock("../backend/controller/image");
 
-// Import mocked modules for type casting
 import { firebase } from "../backend/config/firebase";
 import { addDoc, collection, deleteDoc, getDocs } from "firebase/firestore";
 
@@ -76,10 +74,8 @@ describe("Service Controller", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    // Set up authenticated user
     (firebase.auth.currentUser as unknown) = mockUser;
 
-    // Mock Firestore functions
     (collection as jest.Mock).mockReturnValue({
       path: "users/test-uid/history",
     });
@@ -87,13 +83,11 @@ describe("Service Controller", () => {
     (getDocs as jest.Mock).mockResolvedValue(mockQuerySnapshot);
     (deleteDoc as jest.Mock).mockResolvedValue(undefined);
 
-    // Mock image upload
     (uploadImageToCloudinary as jest.Mock).mockImplementation(async (image) => {
       if (typeof image === "string") return image;
       return "https://cloudinary.com/upload-test.jpg";
     });
 
-    // Update mock diagnosis result to have only one image for consistency
     mockDiagnosisResult.images = [
       new Blob(["test1"], { type: "image/jpeg" }) as File,
     ] as File[] | string[];
@@ -111,7 +105,6 @@ describe("Service Controller", () => {
         "history"
       );
 
-      // Check that images are uploaded
       expect(uploadImageToCloudinary).toHaveBeenCalledTimes(1);
 
       expect(addDoc).toHaveBeenCalledWith(

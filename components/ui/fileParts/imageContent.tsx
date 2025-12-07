@@ -1,4 +1,5 @@
 import { toURL } from "@/utils/transform";
+import { Image } from "primereact/image";
 
 export const ImageContent = ({ images }: { images: string[] | File[] }) => {
   return (
@@ -10,10 +11,9 @@ export const ImageContent = ({ images }: { images: string[] | File[] }) => {
         </div>
         <div className="flex flex-wrap gap-4">
           {images.map((image, index) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={toURL(image)}
-              className="h-40 aspect-square my-8"
+              className="h-20 aspect-square my-8"
               key={index}
               alt="image"
             />

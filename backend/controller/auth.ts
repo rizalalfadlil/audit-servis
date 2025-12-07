@@ -51,7 +51,7 @@ export const updateProfile = async (
       await setDoc(userDocRef, updateData, { merge: true });
     }
 
-    return await getCurrentUser(); // Return updated user data
+    return await getCurrentUser();
   } catch (error) {
     if (error instanceof Error) {
       throw error;

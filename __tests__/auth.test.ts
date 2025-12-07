@@ -8,7 +8,6 @@ import {
 } from "../backend/controller/auth";
 import { uploadImageToCloudinary } from "../backend/controller/image";
 
-// Mock Firebase dependencies
 jest.mock("../backend/config/firebase", () => ({
   firebase: {
     auth: {
@@ -32,7 +31,6 @@ jest.mock("firebase/firestore", () => ({
 
 jest.mock("../backend/controller/image");
 
-// Import mocked modules for type casting
 import { firebase } from "../backend/config/firebase";
 import {
   signInWithEmailAndPassword,
@@ -60,13 +58,10 @@ describe("Auth Controller", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    // Reset firebase auth mock
     (firebase.auth.currentUser as unknown) = null;
 
-    // Mock uploadImageToCloudinary
     (uploadImageToCloudinary as jest.Mock).mockResolvedValue(mockLogoUrl);
 
-    // Mock Firestore functions
     (doc as jest.Mock).mockReturnValue({ path: "users/test-uid" });
     (setDoc as jest.Mock).mockResolvedValue(undefined);
   });

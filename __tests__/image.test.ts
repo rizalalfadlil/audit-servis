@@ -5,7 +5,6 @@ import {
 import { getCloudinaryConfig } from "../backend/config/cloudinary";
 import { toBlob } from "../utils/transform";
 
-// Mock dependencies
 jest.mock("../backend/config/cloudinary");
 jest.mock("../utils/transform");
 

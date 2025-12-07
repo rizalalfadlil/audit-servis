@@ -1,7 +1,5 @@
 import { toURL } from "@/utils/transform";
-import {
-  FileUpload,
-} from "primereact/fileupload";
+import { FileUpload } from "primereact/fileupload";
 import { Image } from "primereact/image";
 type Props = {
   onFilesChange?: (files: File) => void;
@@ -26,8 +24,10 @@ export default function ImageUploads({
             const files = (e.files as File[]) || [];
             if (!files.length) return;
             const first = files[0];
-            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            if (first instanceof Blob) onFilesChange && onFilesChange(first);
+
+            if (first instanceof Blob && onFilesChange) {
+              onFilesChange(first);
+            }
           }}
         />
       )}

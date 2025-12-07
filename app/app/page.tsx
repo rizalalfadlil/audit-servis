@@ -17,7 +17,6 @@ import { useSuggestions } from "@/components/ui/layouts/suggestionsLayout";
 
 export default function Page() {
   const stepperRef = useRef<Stepper>(null);
-  // Initial Check In
   const [customerName, setCustomerName] = useState("");
   const [customerContact, setCustomerContact] = useState<string | number>("");
   const [deviceName, setDeviceName] = useState("");

@@ -2,12 +2,10 @@ import "@testing-library/jest-dom";
 import "whatwg-fetch";
 import React from "react";
 
-// Polyfill TextEncoder/TextDecoder for Jest environment
 import { TextEncoder, TextDecoder } from "util";
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder as typeof global.TextDecoder;
 
-// Mock window.matchMedia
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
@@ -22,13 +20,11 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-// Mock Firebase
 jest.mock("firebase/app", () => ({
   initializeApp: jest.fn(),
   getApps: jest.fn(() => []),
   getApp: jest.fn(),
   deleteApp: jest.fn(),
-  // Add other Firebase services you're using as needed
 }));
 
 jest.mock("firebase/auth", () => ({
@@ -37,12 +33,12 @@ jest.mock("firebase/auth", () => ({
     signInWithEmailAndPassword: jest.fn(),
     createUserWithEmailAndPassword: jest.fn(),
     signOut: jest.fn(),
-    onAuthStateChanged: jest.fn(() => jest.fn()), // Return unsubscribe function
+    onAuthStateChanged: jest.fn(() => jest.fn()),
   })),
   signInWithEmailAndPassword: jest.fn(),
   createUserWithEmailAndPassword: jest.fn(),
   signOut: jest.fn(),
-  onAuthStateChanged: jest.fn(() => jest.fn()), // Return unsubscribe function
+  onAuthStateChanged: jest.fn(() => jest.fn()),
 }));
 
 jest.mock("firebase/firestore", () => ({
@@ -56,15 +52,12 @@ jest.mock("firebase/firestore", () => ({
   getDoc: jest.fn(),
   setDoc: jest.fn(),
 }));
-
-// Mock react-markdown
 jest.mock("react-markdown", () => ({
   __esModule: true,
   default: ({ children }: { children: React.ReactNode }) =>
     React.createElement("div", null, children),
 }));
 
-// Mock MarkdownRenderer component - completely bypass react-markdown
 jest.mock("@/components/ui/markdown/MarkdownRenderer", () => ({
   MarkdownRenderer: ({
     content,
@@ -80,7 +73,6 @@ jest.mock("@/components/ui/markdown/MarkdownRenderer", () => ({
     ),
 }));
 
-// Mock SuggestionsProvider and useSuggestions
 jest.mock("@/components/ui/layouts/suggestionsLayout", () => ({
   SuggestionsProvider: ({ children }: { children: React.ReactNode }) =>
     children,
@@ -88,7 +80,7 @@ jest.mock("@/components/ui/layouts/suggestionsLayout", () => ({
     showSuggestions: jest.fn(),
   }),
 }));
-// Mock Header and Footer components
+
 jest.mock("@/components/ui/layouts/header", () => ({
   __esModule: true,
   default: () => React.createElement("header", null, "Mock Header"),
@@ -99,14 +91,12 @@ jest.mock("@/components/ui/layouts/footer", () => ({
   default: () => React.createElement("footer", null, "Mock Footer"),
 }));
 
-// Mock ErrorPage component
 jest.mock("@/components/ui/layouts/errorPage", () => ({
   __esModule: true,
   default: ({ code }: { code: string }) =>
     React.createElement("div", null, `Error ${code}`),
 }));
 
-// Mock next/navigation
 jest.mock("next/navigation", () => ({
   useRouter() {
     return {
@@ -122,12 +112,10 @@ jest.mock("next/navigation", () => ({
   },
 }));
 
-// Mock tailwind-merge
 jest.mock("tailwind-merge", () => ({
   twMerge: jest.fn((...classes: string[]) => classes.join(" ")),
 }));
 
-// Mock fetch for docs page
 global.fetch = jest.fn(() =>
   Promise.resolve({
     text: () =>
@@ -135,7 +123,6 @@ global.fetch = jest.fn(() =>
   } as Response)
 );
 
-// Mock environment variables
 process.env.NEXT_PUBLIC_FIREBASE_API_KEY = "test-api-key";
 process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN = "test.firebaseapp.com";
 process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID = "test-project";

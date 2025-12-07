@@ -78,8 +78,8 @@ export default function Page() {
         reader.readAsDataURL(file);
         setLogo(file);
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
+      console.error(e);
       startMessage("Gagal Mengunggah Logo");
     }
   };
