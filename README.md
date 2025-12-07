@@ -88,8 +88,8 @@ Aplikasi manajemen layanan untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahk
 1. **Clone Repository**
 
    ```bash
-   git clone https://github.com/rizalalfadlil/hackathon-umkm-servis.git
-   cd hackathon-umkm-servis
+   git clone https://github.com/rizalalfadlil/audit-servis.git
+   cd audit-servis
    ```
 
 2. **Install Dependencies**

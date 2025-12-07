@@ -28,8 +28,12 @@ const FormStep = ({
         </p>
       </div>
       <Divider />
-      <div className="grid sm:grid-cols-3 gap-8 py-8">
-        <div className="flex justify-center items-center bg-contain bg-center bg-no-repeat" style={{ backgroundImage: "url(/graphics/phone.svg)" }}>
+      <div className="grid sm:grid-cols-3 gap-8 py-2  sm:py-8">
+        <div className="hidded sm:grid p-12 hidden">
+          <div
+            className=" bg-contain bg-center bg-no-repeat"
+            style={{ backgroundImage: "url(/graphics/phone.svg)" }}
+          ></div>
         </div>
         <div className="space-y-8 sm:col-span-2">
           <div className="grid gap-8 **:w-full py-4">
@@ -48,9 +52,7 @@ const FormStep = ({
                 value={String(customerContact)}
                 onChange={(e) => setCustomerContact(e.target.value)}
               />
-              <label htmlFor="contact">
-                kontak
-              </label>
+              <label htmlFor="contact">kontak</label>
             </FloatLabel>
             <p className="text-xl font-bold">Informasi Perangkat</p>
             <FloatLabel>
