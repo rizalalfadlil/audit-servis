@@ -83,6 +83,7 @@ export function SuggestionsProvider({ children }: { children: ReactNode }) {
       <Dialog
         position="bottom-right"
         modal={false}
+        maximizable
         visible={visible}
         onHide={hideDialog}
         header={
