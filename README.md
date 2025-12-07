@@ -12,6 +12,18 @@ Proyek ini dibuat sebagai submisi Hackathon **IMPHNEN x KOLOSAL "Inovasi AI: Men
 
 - **Membantu Usaha Lokal**: Menyediakan alat profesional yang memungkinkan UMKM bersaing dengan standar transparansi service center besar.
 
+
+## Daftar Isi
+
+- [Tentang Aplikasi](#audit-servis)
+- [Teknologi yang Digunakan](#teknologi-yang-digunakan)
+- [Panduan Instalasi](#panduan-instalasi)
+- [Panduan Pengguna](#panduan-pengguna)
+- [Lisensi](#lisensi)
+- [Kontributor](#kontributor)
+
+
+
 ## Screenshot Aplikasi
 
 ### `/`
@@ -166,7 +178,7 @@ Proyek ini dibuat sebagai submisi Hackathon **IMPHNEN x KOLOSAL "Inovasi AI: Men
    ```
    Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
-## Panduan Penggunaan
+## Panduan Pengguna
 
 panduan lengkap penggunaan bisa dilihat di [panduan pengguna](/USER_GUIDE.md)
 
