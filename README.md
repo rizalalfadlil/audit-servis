@@ -2,7 +2,7 @@
 
 Audit Servis adalah Aplikasi Manajemen Servis yang dirancang untuk mengatasi masalah utama UMKM jasa perbaikan HP dan Laptop Krisis Kepercayaan Pelanggan. Aplikasi ini menyediakan alur kerja yang memaksa transparansi digital dari pendaftaran hingga pelaporan, sekaligus memberikan tools cerdas (Saran AI) untuk meningkatkan efisiensi internal.
 
-[**Demo Aplikasi**](https://audit-servis.vercel.app/)
+### [**Demo Aplikasi**](https://audit-servis.vercel.app/)
 
 ## Tujuan Proyek
 
@@ -47,7 +47,7 @@ Proyek ini dibuat sebagai submisi Hackathon **IMPHNEN x KOLOSAL "Inovasi AI: Men
 ### `docs/`
 ![docs](/public/screenshots/docs.png)
 
-[**Demo Video**](https://youtu.be/_i_EKiqDvFA)
+### [**Demo Video**](https://youtu.be/_i_EKiqDvFA)
 
 ## Fitur Utama
 
