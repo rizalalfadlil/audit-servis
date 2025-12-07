@@ -137,21 +137,21 @@ Aplikasi manajemen servis untuk UMKM (Usaha Mikro Kecil Menengah) yang memudahka
 ## Tampilan Aplikasi
 
 `/`
-![hero](/screenshots/hero.png)
+![hero](/public/screenshots/hero.png)
 
 `/app`
-![step1](/screenshots/step1.png)
-![step2](/screenshots/step2.png)
-![step3](/screenshots/step3.png)
+![step1](/public/screenshots/step1.png)
+![step2](/public/screenshots/step2.png)
+![step3](/public/screenshots/step3.png)
 
 `profile/`
-![profile](/screenshots/profile.png)
+![profile](/public/screenshots/profile.png)
 
 `history/`
-![history](/screenshots/history.png)
+![history](/public/screenshots/history.png)
 
 `docs/`
-![docs](/screenshots/docs.png)
+![docs](/public/screenshots/docs.png)
 
 ## Panduan Penggunaan
 
