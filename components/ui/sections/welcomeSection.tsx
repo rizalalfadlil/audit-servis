@@ -16,9 +16,8 @@ const WelcomeSection = () => {
         backgroundColor: "var(--highlight-bg)",
         color: "var(--highlight-text-color)",
         borderRadius: "var(--border-radius)",
-        padding: "3rem",
       }}
-      className="h-dvh flex flex-col justify-center items-center"
+      className="h-dvh flex flex-col justify-center items-center p-4"
     >
       <div className="flex flex-col gap-2 text-center justify-center items-center text-start md:text-center">
         <p className="text-4xl font-bold">
