@@ -17,6 +17,10 @@ Proyek ini dibuat sebagai submisi Hackathon **IMPHNEN x KOLOSAL "Inovasi AI: Men
 
 - [Tentang Aplikasi](#audit-servis)
 - [Teknologi yang Digunakan](#teknologi-yang-digunakan)
+- [Screenshot Aplikasi](#screenshot-aplikasi)
+- [Demo Video](#demo-video)
+- [Fitur Utama](#fitur-utama)
+- [Struktur Proyek](#struktur-proyek)
 - [Panduan Instalasi](#panduan-instalasi)
 - [Panduan Pengguna](#panduan-pengguna)
 - [Lisensi](#lisensi)
